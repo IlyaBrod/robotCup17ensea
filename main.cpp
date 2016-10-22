@@ -1,3 +1,9 @@
+/* Fichier principal du robot.
+ * Controleur : NUCLEO_F411RE
+ *
+ */
+
+
 #include "mbed.h"
 
 DigitalOut myled(LED1);
@@ -10,3 +16,5 @@ int main() {
         wait(0.2);
     }
 }
+
+
