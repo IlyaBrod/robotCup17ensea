@@ -53,21 +53,21 @@ Commandes Git
 
 ---
 ### Partage avec le serveur #
-* >**Récupérer les modifications**  
-* * >`git pull`  
-_Récupère les dernières modifications et les fusionne avec les fichiers du projet. 
-Si un conflit apparait, le symbole <<<<< sera ajouté dans le fichier._
+* **Récupérer les modifications**  
+    * `git pull`  
+      _Récupère les dernières modifications et les fusionne avec les fichiers du projet. 
+      Si un conflit apparait, le symbole <<<<< sera ajouté dans le fichier._
+      
+* **Envoyer/Inverser la modification d'un commit au serveur**
+    * `git push`  
+      _Toujours faire un pull avant_  
+    * `git revert ID_du_commit`  
+      _A éviter_  
 
-* >**Envoyer/Inverser la modification d'un commit au serveur**
-* * >`git push`  
-_Toujours faire un pull avant_  
-* * >`git revert ID_du_commit`  
-_A éviter_  
-
-* >**Ajouter/Supprimmer un numéro de version à un commit**
-* * >`git tag nomTag ID_du_commit`  
-`git push --tags`  
-* * >`git tag -d nomTag`
+* **Ajouter/Supprimmer un numéro de version à un commit**
+   * `git tag nomTag ID_du_commit`  
+`      git push --tags`  
+   * `git tag -d nomTag`
 
 ---
 ### Gestion des erreurs #
