@@ -71,10 +71,10 @@ Commandes Git
 
 ---
 ### Gestion des erreurs #
-* **Modifier le message du commit **
+* **Modifier le message du commit**
   * `git commit --amend`  
 
-* **Annuler un commit sans modifier les fichier/en restaurant les fichiers **
+* **Annuler un commit sans modifier les fichier/en restaurant les fichiers**  
   _HEAD = dernier commit, HEAD^ = avant dernier commit etc..._
   *  `git reset HEAD^`  
 `   git reset HEAD^^`  
@@ -86,30 +86,30 @@ Commandes Git
  
 ---
 ### Gestion des branches #
-* > **Se situer/se déplacer**
-* * >`git branch`
-* * >`git checkout nomBranche`
-* > **Créer une branche/Supprimmer/Fusionner**
-* * >`git branch nomBranche`
-* * >`git branch -d nomBranche`  
-`git branch -D nomBranche`  
-_-D force la suppression sans vérifier la fusion de la branche_
-* * >`git merge nomBranche`  
-_Il faut se trouver dans la branche dans laquelle on fusionne_  
+* **Se situer/se déplacer**
+  * `git branch`
+  * `git checkout nomBranche`
 
-* > **Mettre de côté/Revenir dans une branche**
-* * >`git stash`
-* * > `git stash apply`
+* **Créer une branche/Supprimmer/Fusionner**
+  * `git branch nomBranche`
+  * `git branch -d nomBranche`  
+    `git branch -D nomBranche`  
+   _-D force la suppression sans vérifier la fusion de la branche_
+  * `git merge nomBranche`  
+    _Il faut se trouver dans la branche dans laquelle on fusionne_  
 
-* > **Partage de branche sur le serveur **
-* * > Afficher/Récupération d'une branche  
-* * >> `git branch -r`
-* * >> `git branch --track nomLocal origin/nomServeur`
-* * > Ajouter/Supprimmer une branche du serveur  
-* * >> `git push origin origin:refs/heads/nomBranche`  
-* * >> `git push origin :heads/nomBranche`  
-_Chaque client doit la supprimmer en local_
+* **Mettre de côté/Revenir dans une branche**
+  * `git stash`
+  * `git stash apply`
 
+* **Partage de branche sur le serveur**
+  * Afficher/Récupération d'une branche  
+    * `git branch -r`
+    * `git branch --track nomLocal origin/nomServeur`
+  * Ajouter/Supprimmer une branche du serveur  
+    * `git push origin origin:refs/heads/nomBranche`  
+    * `git push origin :heads/nomBranche`  
+      _Chaque client doit la supprimmer en local_
 
 ---
 
