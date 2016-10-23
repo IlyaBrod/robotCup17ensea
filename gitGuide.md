@@ -5,31 +5,31 @@ Commandes Git
 
 * Configuration des couleurs dans la console
 
->`git config --global color.diff auto`  
->`git config --global color.status auto`  
->`git config --global color.branch auto`  
+'git config --global color.diff auto
+ git config --global color.status auto
+ git config --global color.branch auto'`  
 
 * Configuration de l'utilisateur
 
->`git config --global user.name "votre_pseudo"`  
->`git config --global user.email moi@email.com`
+`git config --global user.name "votre_pseudo"
+ git config --global user.email moi@email.com`
+ 
 
 * Importation/Création d'un git
 
->_Importer un github, (attention au dossier où vous vous trouvez)_  
->`git clone https://github.com/adresse`  
->_Création d'un git en local (attention au dossier)_  
->`git init`
-
-
+ _Importer un github, (attention au dossier où vous vous trouvez)_  
+`git clone https://github.com/adresse`  
+ _Création d'un git en local (attention au dossier)_  
+`git init`
 ---
+
+
 ### General #
+
 * **Avant un commit**
-* >Récupérer les modifications du serveur/voir les modifications locales  
-* * >`git pull`  
-* * >`git status`  
->`git diff`  
->`git diff nomFichier`  
+  * Récupérer les modifications du serveur/voir les modifications locales  
+    *`git pull`
+    *`git status` `git diff`  `git diff nomFichier`  
 
 * >Ajouter/Supression un fichier au commit  
 * * >`git add nomFichier`  
