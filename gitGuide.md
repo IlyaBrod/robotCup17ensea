@@ -27,25 +27,29 @@ Commandes Git
 
 ### General #
 
-* **Avant un commit**
-  * Récupérer les modifications du serveur/voir les modifications locales  
-    *`git pull`
-    *`git status` `git diff`  `git diff nomFichier`  
+* **Récupérer les modifications du serveur/voir les modifications locales**    
+    * `git pull`  
+    * `git status`  
+      `git diff`  
+      `git diff nomFichier`    
 
-* >Ajouter/Supression un fichier au commit  
-* * >`git add nomFichier`  
->`git add -a`  
-* * >`git reset HEAD --nomFichier`  
+* **Ajouter/Supression un fichier au commit**  
 
-* **Commmit en local**
-* > Faire un commit
-* * >`git commit`  
-`git commit nomFichier1 nomFichier2`  
-`git commit -a`  
-* > Afficher la liste des commmits _(contrôle page up/down, Q : quitter)_
-* * >`git log`  
-`git log -p`  
-`git log --stat`  
+    * `git add nomFichier`  
+      `git add -a`  
+    * `git reset HEAD --nomFichier`  
+
+* **Faire un commit**  
+
+  `git commit`  
+  `git commit nomFichier1 nomFichier2`  
+  `git commit -a`  
+
+* **Afficher la liste des commmits** _(contrôle page up/down, Q : quitter)_  
+
+  `git log`  
+  `git log -p`  
+  `git log --stat`  
 
 ---
 ### Partage avec le serveur #
