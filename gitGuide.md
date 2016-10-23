@@ -71,16 +71,18 @@ Commandes Git
 
 ---
 ### Gestion des erreurs #
-* > **Modifier le message du commit **
-* * >`git commit --amend`  
-* > **Annuler un commit sans modifier les fichier/en restaurant les fichiers **
-_HEAD = dernier commit, HEAD^ = avant dernier commit etc..._
-* * >`git reset HEAD^`  
-`git reset HEAD^^`  
-`git reset ID_du_commit`  
-* * >`git reset --hard HEAD^`  
-* > **Restauration du fichier au dernier commit**
-* * >`git checkout nomFichier` 
+* **Modifier le message du commit **
+  * `git commit --amend`  
+
+* **Annuler un commit sans modifier les fichier/en restaurant les fichiers **
+  _HEAD = dernier commit, HEAD^ = avant dernier commit etc..._
+  *  `git reset HEAD^`  
+`   git reset HEAD^^`  
+   `git reset ID_du_commit`  
+  * `git reset --hard HEAD^`  
+
+* **Restauration du fichier au dernier commit**
+  * `git checkout nomFichier` 
  
 ---
 ### Gestion des branches #
