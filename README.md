@@ -1,12 +1,6 @@
 # robotCup17ensea
 Code robot, coupe de France de robotique 2017, école ENSEA.
 
-
-
-
-
-compilation par le makefile.
-
+Compiler le projet par la commande linux "make"
 Documentation Doxygène.
-
-Test git
+Plus de détails sur la programmation et le projet dans les documents présents dans le dossier "Guides and Rules"
