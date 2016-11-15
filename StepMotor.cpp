@@ -9,7 +9,7 @@
 /*
 *number of step : nombre de pas d'un tour du moteur
 *steppin et direction_pin : control du moteur via carte
-*
+*h
 *
 */
 StepMotor::StepMotor(int numberOfStep, PinName stepPin, PinName directionPin) : numberOfStep(numberOfStep),stepPin(stepPin), directionPin(directionPin)
