@@ -7,22 +7,28 @@ Balise::Balise(float baliseRadius)
 }
 
 
-float Balise::triangulate(float angle1, float angle2, float angle3)
+Point Balise::triangulate(float angle1, float angle2, float angle3)
 {
+	Point Poi_Robot();
+
+	float r1= calc_Dist_From_Balise(angle1);
+	float r2= calc_Dist_From_Balise(angle2);
+	float r3= calc_Dist_From_Balise(angle3);
 
 
 
-	return 0.0;
+	return Poi_Robot;
 }
 
 
-float Balise::duoangulate(float angle1,float angle2)
+Point Balise::duoangulate(float angle1,float angle2)
 {
+	Point Poi_Robot();
 	float r1= calc_Dist_From_Balise(angle1);
 	float r2= calc_Dist_From_Balise(angle2);
 
 
-	return 0.0;
+	return Poi_Robot;
 }
 
 

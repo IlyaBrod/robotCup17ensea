@@ -7,19 +7,12 @@
 class Point
 {
 public:
+	float X;
+	float Y;
+	float ANGLE;
+
 	Point();
 	Point(float x,float y,float angle);
 	
-	float getX();
-	float getY();
-	float getAngle();
-	
-	void setX(float x);
-	void setY(float y);
-	void setXY(float x,float y);
-	void setAngle(float angle);
-private :
-	float x;
-	float y;
-	float angle;
+
 };
