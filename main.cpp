@@ -5,8 +5,11 @@
 
 //hello
 #include "mbed.h"
+#include "Point.hpp"
+
 
 DigitalOut myled(LED1);
+Point p(5,6,10);
 
 int main() {
     while(1) {

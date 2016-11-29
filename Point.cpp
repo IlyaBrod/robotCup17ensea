@@ -10,8 +10,8 @@ Point::Point()
 
 Point::Point(float x,float y,float angle)
 {
-	this.X = x;
-	this.Y = y;
-	this.ANGLE = angle;
+	X = x;
+	Y = y;
+	ANGLE = angle;
 	
 }
