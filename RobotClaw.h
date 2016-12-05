@@ -84,6 +84,9 @@ public:
     void SpeedAccelDeccelPositionM2(uint32_t accel, int32_t speed, uint32_t deccel, int32_t position, uint8_t flag);
     void SpeedAccelDeccelPositionM1M2(uint32_t accel1,uint32_t speed1,uint32_t deccel1, int32_t position1,uint32_t accel2,uint32_t speed2,uint32_t deccel2, int32_t position2,uint8_t flag);
 
+
+    //Test commentaire
+
 private:
     Serial _roboclaw;
     uint16_t crc;
