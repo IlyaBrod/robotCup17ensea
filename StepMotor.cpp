@@ -31,7 +31,7 @@ void StepMotor::one_Step()
     (this->stepPin) = 1;
     wait_ms(1);
     (this->stepPin) = 0;
-    this->angleUpdate();
+    this->angle_Update();
 }
 
 void StepMotor::direction_Toogle (void)
@@ -44,29 +44,29 @@ void StepMotor::direction_Toogle (void)
 
 void StepMotor::angle_Update(void)
 {
-    if (this->direction_pin == 0)
+    if (this->directionPin == 0)
     {
-        this->position_angle = this->position_angle + (360.0/number_of_step);
-        if (this->position_angle >= 360)
-            this->position_angle -= 360;
+        this->positionAngle = this->positionAngle + (360.0/numberOfStep);
+        if (this->positionAngle >= 360)
+            this->positionAngle -= 360;
     }
     else
     {
-        this->position_angle -= (360.0/number_of_step);
-        if ( this->position_angle < 0 )
-        this->position_angle =+ 360;
+        this->positionAngle -= (360.0/numberOfStep);
+        if ( this->positionAngle < 0 )
+        this->positionAngle =+ 360;
     }
 }
 
 int StepMotor::init_Interuption_Step_Timer (int ms)
 {
-    (this->Interupt_steping).attach_us(this,&StepMotor::One_step,ms);
+    (this->InteruptSteping).attach_us(this,&StepMotor::one_Step,ms);
     return 0;
 }
 
 int StepMotor::stop_Interution_Step_Timer (int ms)
 {
-    (this->Interupt_steping).detach();
+    (this->InteruptSteping).detach();
     return 0;
 }
 

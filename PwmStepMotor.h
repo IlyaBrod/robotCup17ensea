@@ -15,6 +15,56 @@
 #ifndef PWMSTEPMOTOR_H
 #define PWMSTEPMOTOR_H
 
-//test
+
+
+class PwmStepMotor
+{
+private:
+	int pwmPeriode_us;
+	int pwmDir;
+	int nombreDeStepParTour;
+	float pwmCycle;
+	int lastTime;
+	float angle;
+	PwmOut pwmMoteur;
+
+
+public :
+	/**
+	 * @param pwmOut				: nom de la pin utilisé
+	 * @param pwmPeriode_us			: [1 micro seconde]
+	 * @param nombreDeStepParTour	: [200]
+	 * @param pwmDir				: [0]
+	 */
+	PwmStepMotor(PinName ,int ,float , int , int );
+
+
+	/**
+	 *
+	 * @param pwmPeriode_us : edit
+	 * @param pwmCycle		: edit
+	 */
+	void set(int pwmPeriode_us,float pwmCycle);
+
+	/**
+	 *
+	 * @return renvoi l'angle par raport au depart du moteur
+	 */
+	float readAngle();
+
+	/**
+	 *
+	 * @return timer start value
+	 */
+	void start();
+
+	/**
+	 *
+	 * @return timer stop value
+	 */
+	void stop();
+
+
+};
 
 #endif
