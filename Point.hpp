@@ -12,7 +12,7 @@ public:
 	float ANGLE;
 
 	Point();
-	Point(float x,float y,float angle);
+	Point(const float &x, const float &y);
+	Point(const float &x, const float &y, const float &angle);
 	
-
 };
