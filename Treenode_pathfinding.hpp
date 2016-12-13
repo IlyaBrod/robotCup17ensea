@@ -13,7 +13,8 @@ class TreenodePathfinding{
 		Point point ;
 
 	public :
-		
+		TreenodePathfinding(const TreenodePathfinding* &father): father(_father), leftson(NULL), rightson(NULL), point(){}
+
 };
 
 #endif

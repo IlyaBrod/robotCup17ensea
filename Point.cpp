@@ -8,14 +8,14 @@ Point::Point()
 	ANGLE = 0.0 ;
 }
 
-Point::Point(float x,float y)
+Point::Point(const float &x, const float &y)
 {
 	X = x;
 	Y = y;
 	ANGLE = 0.0;
 	
 }
-Point::Point(float x,float y,float angle)
+Point::Point(const float &x, const float &y, const float &angle)
 {
 	X = x;
 	Y = y;
