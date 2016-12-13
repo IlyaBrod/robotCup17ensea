@@ -3,7 +3,7 @@
 #include "mbed.h"
 #include "registers.h"
 
-/** The RoboClaw class, you can use the library with : http://www.ionmc.com/RoboClaw-2x15A-Motor-Controller_p_10.html
+/** The RoboClaw class, yo ucan use the library with : http://www.ionmc.com/RoboClaw-2x15A-Motor-Controller_p_10.html
 *   Used to control one or two motors with (or not) encoders
 *  @code
 * #include "mbed.h"
