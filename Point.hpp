@@ -14,5 +14,5 @@ public:
 	Point();
 	Point(const float &x, const float &y);
 	Point(const float &x, const float &y, const float &angle);
-	
+
 };
