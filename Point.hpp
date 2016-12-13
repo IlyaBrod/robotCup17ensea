@@ -1,4 +1,5 @@
-
+#ifndef CLASS_POINT_DEFINED
+#define CLASS_POINT_DEFINED
 /**
  * Représente un point dans l'escpace 2D.
  * Position X,Y
@@ -14,5 +15,8 @@ public:
 	Point();
 	Point(const float &x, const float &y);
 	Point(const float &x, const float &y, const float &angle);
+	Point(const Point &p);
 
 };
+
+#endif

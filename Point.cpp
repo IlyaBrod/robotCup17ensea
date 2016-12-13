@@ -22,3 +22,5 @@ Point::Point(const float &x, const float &y, const float &angle)
 	ANGLE = angle;
 	
 }
+
+Point::Point(const Point &p): X(p.X), Y(p.Y), ANGLE(p.ANGLE){}
