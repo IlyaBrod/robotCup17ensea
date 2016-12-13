@@ -1,6 +1,6 @@
-#include "mbed.h"
-#include "PwmStepMotor.h"
-#include "GeneralItem.h"
+
+#include "IncludeAll.h"
+
 
 using namespace std;
 PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 1,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0):pwmMoteur(pwmOut)

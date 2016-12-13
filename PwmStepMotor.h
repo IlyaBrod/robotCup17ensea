@@ -17,7 +17,7 @@
 
 
 
-class PwmStepMotor
+class g
 {
 private:
 	int pwmPeriode_us;
@@ -31,8 +31,9 @@ private:
 
 public :
 	/**
-	 * @param pwmOut				: nom de la pin utilisé
+	 * @param pinName				: nom de la pin utilisé
 	 * @param pwmPeriode_us			: [1 micro seconde]
+	 * @param cycle					: [0.5]
 	 * @param nombreDeStepParTour	: [200]
 	 * @param pwmDir				: [0]
 	 */

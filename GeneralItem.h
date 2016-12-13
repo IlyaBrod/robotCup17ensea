@@ -16,6 +16,8 @@ class GeneralItem
 {
 public :
 	static Timer sinceInitUsTimer;
+
+	static void initGeneralItem();
 };
 
 
