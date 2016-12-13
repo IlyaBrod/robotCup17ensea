@@ -1,7 +1,8 @@
-#import "mbed.h"
-#import "PwmStepMotor.h"
+#include "mbed.h"
+#include "PwmStepMotor.h"
+#include "
 using namespace std;
-PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 1,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0):pwmOut(pwmOut)
+PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 1,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0):pwmMoteur(pwmOut)
 {
 	angle = 0;
 }
@@ -9,20 +10,20 @@ PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 1,float pwmCycle =
 
 void PwmStepMotor::set(int pwmPeriode_us,float pwmCycle)
 {
-	this->Stop();
+	this->stop();
 	this->pwmPeriode_us = pwmPeriode_us;
 	this->pwmCycle = pwmCycle;
 }
 
-float PwmStepMotor::read_Angle()
+float PwmStepMotor::readAngle()
 {
 	int time = GeneralItem.sinceInitUsTimer.read();
 	int intertime = time - lastTime;
 	lastTime = time;
 
-	if (pwmDir = 0)
+	if (pwmDir == 0)
 		angle += (360*intertime/((float)pwmPeriode_us*0.000001*nombreDeStepParTour));
-	else if (pwmDir = 1)
+	else if (pwmDir == 1)
 		angle -= (360*intertime/((float)pwmPeriode_us*0.000001*nombreDeStepParTour));
 
 	if (angle >= 360)
