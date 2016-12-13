@@ -1,6 +1,7 @@
 #include "mbed.h"
 #include "PwmStepMotor.h"
-#include "
+#include "GeneralItem.h"
+
 using namespace std;
 PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 1,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0):pwmMoteur(pwmOut)
 {
@@ -17,7 +18,7 @@ void PwmStepMotor::set(int pwmPeriode_us,float pwmCycle)
 
 float PwmStepMotor::readAngle()
 {
-	int time = GeneralItem.sinceInitUsTimer.read();
+	int time = GeneralItem::sinceInitUsTimer.read();
 	int intertime = time - lastTime;
 	lastTime = time;
 
@@ -36,7 +37,7 @@ float PwmStepMotor::readAngle()
 
 void PwmStepMotor::start()
 {
-	lastTime = GeneralItem.sinceInitUsTimer.read();
+	lastTime = GeneralItem::sinceInitUsTimer.read();
 	pwmMoteur.period_us(pwmPeriode_us);
 	pwmMoteur.write(pwmCycle);
 }
