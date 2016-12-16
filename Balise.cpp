@@ -1,18 +1,18 @@
 #include "Balise.hpp"
 
 
-Balise::Balise(float baliseRadius)
+Balise::Balise()
 {
-	this.baliseRadius = baliseRadius;
-	this.mode = 0;
+	this->baliseRadius =RADIUS_B;
+	this->mode = 0;
 }
 
-void Balise::setMode(int newMode)
+void Balise::set_Mode(int newMode)
 {
 	if(newMode>=0 && newMode<=2) {this.mode = newMode;}
 }
 
-double Balise::triACalc(double r1,double r2,double n1, double n2)
+double Balise::tri_A_Calc(double r1,double r2,double n1, double n2)
 {
 	return 0.5*(r1*r1-r2*r2+n2-n1);
 }
@@ -67,5 +67,23 @@ float Balise::get_Orientation(float db2, float db1, float angle)
 }
 
 
-
+Point Balise::get_Point()
+{
+	Point Loc(0,0,0);
+	
+	switch(this->mode)
+	{
+		case(0):
+			break;
+		case(1):
+			
+			break;
+		case(2):
+			break;
+		else:
+			break;
+	}
+	
+	return Loc;
+}
 

@@ -1,4 +1,5 @@
-
+//Constantes liés à la balise
+#define RADIUS_B 8.0
 
 //Constantes de terrain
 #define ANGLE_B2 135

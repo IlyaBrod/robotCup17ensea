@@ -14,14 +14,14 @@ private:
 
 	int mode;
 	
-	float baliseRadius;
+	double baliseRadius;
 	
 	/**
 	 * Fonction qui calcule la distance robot<->balise
 	 * @param angle Angle d'observation de la balise
 	 * @return distance
 	 */
-	float calc_Dist_From_Balise(float angle);
+	double calc_Dist_From_Balise(float angle);
 
 	/**
 	 * Calcule le coefficient A pour la triangulation.
@@ -30,7 +30,7 @@ private:
 	 * @param n1 Norme du vecteur 1
 	 * @param n2 Norme du vecteur 2 
 	 */
-	double triACalc(double r1,double r2,double n1, double n2);
+	double tri_A_Calc(double r1,double r2,double n1, double n2);
 
 
 	/**
@@ -71,14 +71,13 @@ public:
 	 * 1 : triangulation par angles \n
 	 * 2 : triangulation par 2 orientation \n
 	 */
-	void setMode(int newMode);
+	void set_Mode(int newMode);
 	
 	
 	/**
 	 * Initialisaiton de la balise
-	 * @param baliseRadius Rayon de la balise. L'unité de cette valeur détermine l'unité de tous les calculs
 	 */
-	Balise(float baliseRadius);
+	Balise();
 		
 	
 	/**
@@ -86,6 +85,6 @@ public:
 	 * Le calcul est fait suivant le mode choisis.
 	 * @return Point
 	 */
-	Point getPoint();
+	Point get_Point();
 		
 };
