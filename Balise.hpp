@@ -32,22 +32,6 @@ private:
 	 */
 	double triACalc(double r1,double r2,double n1, double n2);
 
-public:
-
-	/**
-	 * Change le mode de calcul de la position du robot.
-	 * 0 : triangulation par distances \n
-	 * 1 : triangulation par angles \n
-	 * 2 : triangulation par 2 orientation \n
-	 */
-	void setMode(int newMode);
-	
-	
-	/**
-	 * Initialisaiton de la balise
-	 * @param baliseRadius Rayon de la balise. L'unité de cette valeur détermine l'unité de tous les calculs
-	 */
-	Balise(float baliseRadius);
 
 	/**
 	 * Calcule la position du robot
@@ -67,8 +51,7 @@ public:
 	 * @return objet POINT, position du robot
 	 */
 	Point duoangulate_1(float angle1,float angle2);
-		
-	
+
 	/**
 	 * Calcule l'angle d'orientation du robot à partir
 	 * de la balise 2 et 1.
@@ -78,8 +61,31 @@ public:
 	 * @return Angle en degré
 	 */
 	float get_Orientation(float db2,float db1,float angle);
+
+
+public:
+
+	/**
+	 * Change le mode de calcul de la position du robot.
+	 * 0 : triangulation par distances \n
+	 * 1 : triangulation par angles \n
+	 * 2 : triangulation par 2 orientation \n
+	 */
+	void setMode(int newMode);
+	
+	
+	/**
+	 * Initialisaiton de la balise
+	 * @param baliseRadius Rayon de la balise. L'unité de cette valeur détermine l'unité de tous les calculs
+	 */
+	Balise(float baliseRadius);
 		
-		
-		
+	
+	/**
+	 * Donne la position et l'orientation du robot sur le terrain.
+	 * Le calcul est fait suivant le mode choisis.
+	 * @return Point
+	 */
+	Point getPoint();
 		
 };
