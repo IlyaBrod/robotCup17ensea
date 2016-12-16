@@ -1,5 +1,9 @@
-#include <math>
+#include <math.h>
 #include "Point.hpp"
+
+#define ANGLE_B2 135
+#define CORNER_B2 90
+#define B2B1 100
 
 /**
  * Représente le système de balise.\n
@@ -7,6 +11,19 @@
  */
 class Balise
 {
+
+private:
+
+	float baliseRadius;
+	
+	/**
+	 * Fonction qui calcule la distance robot<->balise
+	 * @param angle Angle d'observation de la balise
+	 * @return distance
+	 */
+	float calc_Dist_From_Balise(float angle);
+
+
 
 public:
 	/**
@@ -33,19 +50,8 @@ public:
 	 */
 	Point duoangulate(float angle1,float angle2);
 		
-private:
-
-	float baliseRadius;
-	
-	/**
-	 * Fonction qui calcule la distance robot<->balise
-	 * @param angle Angle d'observation de la balise
-	 * @return distance
-	 */
-	float calc_Dist_From_Balise(float angle);
-
 		
-
+	float get_Orientation(float db2,float db1,float angle);
 		
 		
 		
