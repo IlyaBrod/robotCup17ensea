@@ -1,6 +1,8 @@
 #include "Treenode_pathfinding.hpp"
 
-TreenodePathfinding::TreenodePathfinding(const TreenodePathfinding* &_father): father(_father), leftson(NULL), rightson(NULL), point(){
+TreenodePathfinding::TreenodePathfinding(const Point &p): point(p){}
+
+TreenodePathfinding::TreenodePathfinding(const Point &pconst TreenodePathfinding* &_father): point(p), father(_father), leftson(NULL), rightson(NULL), point(){
 	nbnodes ++ ;
 }
 

@@ -21,7 +21,8 @@ class TreenodePathfinding{
 
 		static void init()const{nbnodes = 0 ;}
 
-		TreenodePathfinding(const TreenodePathfinding* &father);
+		TreenodePathfinding(const Point &p);
+		TreenodePathfinding(const Point &p, const TreenodePathfinding* &father);
 		~TreenodePathfinding();
 
 		void set_leftson(const TreenodePathfinding* &son){leftson = son ;}
