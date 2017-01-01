@@ -9,18 +9,21 @@ MapAnalyser::MapAnalyser()
 }
 
 
-MapAnalyser::loop()
+void MapAnalyser::round()
 {
-	if(loop==2) loop++;
-	loopOnce=true;
+	if(loop==2)
+	{
+		loop+=1;
+		loopOnce=true;
+	}
 }
 
 
-MapAnalyser::getSide()
+char MapAnalyser::get_Side()
 {
 	if(loopOnce==false)
 	{
-		return 0
+		return 0;
 	}
 	else
 	{

@@ -24,7 +24,7 @@ class MapAnalyser
 		/**
 		 * To execute when a new scanning loop is did.
 		 */
-		void loop();
+		void round();
 		
 		/**
 		 * Give the initial location of the robot on the map.
