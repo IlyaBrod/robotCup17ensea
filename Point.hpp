@@ -17,6 +17,8 @@ public:
 	Point(const float &x, const float &y, const float &angle);
 	Point(const Point &p);
 
+	Point& operator=(const Point& p);
+
 };
 
 #endif
