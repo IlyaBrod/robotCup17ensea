@@ -1,7 +1,7 @@
 #ifndef CLASS_TREENODEPATHFINDING_DEFINED
 #define CLASS_TREENODEPATHFINDING_DEFINED
 
-#include "Point.hpp"
+#include "Map.hpp"
 
 #define MAX_NODES 255
 
@@ -16,6 +16,7 @@ class TreenodePathfinding{
 		TreenodePathfinding* leftson ;
 		TreenodePathfinding* rightson ;
 		Point point ;
+		double dist ;
 
 	public :
 
@@ -29,6 +30,8 @@ class TreenodePathfinding{
 		void set_rightson(const TreenodePathfinding* &son){rightson = son ;}
 
 		void set_point(const Point &p);
+
+		void build_tree(const Point &dest, const Rectangle);
 
 };
 
