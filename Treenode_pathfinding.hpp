@@ -23,6 +23,6 @@ class TreenodePathfinding{
 
 };
 
-int TreenodePathfinding::nbnodes = 0 ;
+//int TreenodePathfinding::nbnodes = 0 ;
 
 #endif
