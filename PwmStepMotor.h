@@ -37,7 +37,7 @@ public :
 	 * @param nombreDeStepParTour	: [200]
 	 * @param pwmDir				: [0]
 	 */
-	PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 1000,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0);
+	PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 20,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0);
 
 
 	/**

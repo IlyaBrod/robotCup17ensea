@@ -6,7 +6,11 @@ using namespace std;
 PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us,float pwmCycle, int nombreDeStepParTour, int pwmDir):pwmMoteur(pwmOut)
 {
 	pwmMoteur.period_us(pwmPeriode_us);
-	pwmMoteur.write(pwmCycle);
+	this->pwmPeriode_us = pwmPeriode_us;
+	this->pwmCycle=pwmCycle;
+	this->nombreDeStepParTour=nombreDeStepParTour;
+	this->pwmDir=pwmDir;
+	pwmMoteur.write(0);
 	angle = 0;
 }
 
