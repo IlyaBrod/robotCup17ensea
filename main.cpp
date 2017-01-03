@@ -4,24 +4,19 @@
  */
 
 //hello
-#include "IncludeAll.h"
+#include "mbed.h"
+#include "Point.hpp"
 
 
 DigitalOut myled(LED1);
-//Point p(5,6,10);
-PwmStepMotor myPwm2(PB_4);
-PwmOut myPwm(PB_10);
+Point p(5,6,10);
 
 int main() {
-	GeneralItem::initGeneralItem();
-	myPwm2.start();
-	myPwm.period_us(20);
-	myPwm.write(0.5);
     while(1) {
         myled = 1;
-        wait(1);
+        wait(0.2);
         myled = 0;
-        wait(1);
+        wait(0.2);
     }
 }
 
