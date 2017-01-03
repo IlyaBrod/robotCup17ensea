@@ -129,8 +129,13 @@ void Odometry::GotoThet(double theta_)
         distance_ticks_left = (int32_t) pos_initiale_left + (erreur_theta*m_v/2)/m_distPerTick_left;
         distance_ticks_right = (int32_t) pos_initiale_right - (erreur_theta*m_v/2)/m_distPerTick_right;
     } else {
+<<<<<<< HEAD
+        distance_ticks_left = (int32_t) pos_initiale_left + (erreur_theta*m_v/2)/m_distPerTick_left;
+        distance_ticks_right = (int32_t) pos_initiale_right - (erreur_theta*m_v/2)/m_distPerTick_right;
+=======
         distance_ticks_left = (int32_t) pos_initiale_left - (erreur_theta*m_v/2)/m_distPerTick_left;
         distance_ticks_right = (int32_t) pos_initiale_right + (erreur_theta*m_v/2)/m_distPerTick_right;
+>>>>>>> refs/remotes/origin/nicolas_dev
     }
  
     //logger.printf("TV %3.2f\tTh %3.2f\tET %3.2f\n\r",theta_*180/PI,getTheta()*180/PI,erreur_theta*180/PI);
