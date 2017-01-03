@@ -1,11 +1,26 @@
 #include "MapAnalyser.hpp"
 
+double abs(double);
+
+double abs(double val)
+{
+	if(val<0)
+	{
+		return -val;
+	}
+	else
+	{
+		return val;
+	}
+	
+}
+
 MapAnalyser::MapAnalyser()
 {	
 	loopOnce=false;
 	ennemyBeacon=false;
 	
-	int mode = 1;
+	mode = 1;
 }
 
 void MapAnalyser::add_Angle(double angle)
@@ -74,31 +89,30 @@ void MapAnalyser::update()
 
 void MapAnalyser::correct_Data()
 {
-	bool up = false;
 	
 	double toNext;
 	double expectedError;
 	
-	std::vector<double> toErase;
+	std::vector<int> toErase;
 	
 	if(anglesArray_raw.size()!=0)
 	{
 		//ERROR TYP 1 : Check beacons middle mask
-		for(int i=0;i<anglesArray_raw.size();i+=4)
+		for(unsigned int i=0;i<anglesArray_raw.size();i+=4)
 		{
-			toNext = anglesArray_raw.at(i+3)-anglesArray_raw(i+4);
+			toNext = anglesArray_raw.at(i+3)-anglesArray_raw.at(i+4);
 			expectedError = anglesArray_raw.at(i+2)-anglesArray_raw.at(i+1);
 			
 			if(expectedError< toNext-toNext/3)
 			{
 				//correct the error
-				anglesArray_curr.push_back(anglesArray_raw(i+3)-anglesArray_raw(i));
+				anglesArray_curr.push_back(anglesArray_raw.at(i+3)-anglesArray_raw.at(i));
 			}
 			else
 			{
 				//add witout error correction
-				anglesArray_curr.push_back(anglesArray_raw(i+1)-anglesArray_raw(i));
-				anglesArray_curr.push_back(anglesArray_raw(i+3)-anglesArray_raw(i+2));
+				anglesArray_curr.push_back(anglesArray_raw.at(i+1)-anglesArray_raw.at(i));
+				anglesArray_curr.push_back(anglesArray_raw.at(i+3)-anglesArray_raw.at(i+2));
 			}
 		}
 			
@@ -108,7 +122,7 @@ void MapAnalyser::correct_Data()
 		{	//equal size case
 			if(anglesArray_prev.size()==anglesArray_curr.size())
 			{
-				for(int j=0;j<=anglesArray_curr.size();j++)
+				for(unsigned int j=0;j<=anglesArray_curr.size();j++)
 				{
 					if(abs(anglesArray_curr.at(j)-anglesArray_prev.at(j))>MOVE_EPSILON)
 					{
@@ -125,9 +139,9 @@ void MapAnalyser::correct_Data()
 			
 		if(toErase.size()!=0)
 		{
-			for(x : toErase)
+			for(unsigned int x=0;x<=toErase.size();x++)
 			{
-				anglesArray_curr.erase(x);
+				anglesArray_curr.erase(anglesArray_curr.begin()+toErase.at(x));
 			}
 		}	
 		
@@ -139,19 +153,19 @@ void MapAnalyser::correct_Data()
 		//ERROR TYP 3 : extra small angles
 		
 		toErase.clear();
-		for(int i=0;i<anglesArray_curr.size();i++)
+		for(unsigned int i=0;i<anglesArray_curr.size();i++)
 		{
-			if(anglesArray_curr.at(j)<EPSILON)
+			if(anglesArray_curr.at(i)<EPSILON)
 					{
-						toErase.push_back(j);
+						toErase.push_back(i);
 					}
 		}
 		
 		if(toErase.size()!=0)
 		{
-			for(x : toErase)
+			for(unsigned int x=0;x<=toErase.size();x++)
 			{
-				anglesArray_curr.erase(x);
+				anglesArray_curr.erase(anglesArray_curr.begin()+toErase.at(x));//toErase.at(x)
 			}
 		}
 		
@@ -163,6 +177,17 @@ void MapAnalyser::correct_Data()
 
 void MapAnalyser::set_Mode()
 {
-	
-	
+	int nbr = count();
+	if(nbr<2)
+	{
+		mode=-1;
+	}
+	else if(nbr==2)
+	{
+		mode=1;
+	}
+	else
+	{
+		mode=2;
+	}
 }

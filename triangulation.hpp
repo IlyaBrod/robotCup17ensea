@@ -4,6 +4,7 @@
 /**
  * Return a point representating the location and orientation of the robot.\n
  * Modes :\n
+ * -1 : can't compute correct data
  * 0 : 2 beacons
  * 1 : 3 beacons with angles method
  * 2 : 3 beacons with distances method
