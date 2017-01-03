@@ -1,4 +1,7 @@
-#include <math.h>
+#ifndef CLASS_BALISE_HPP
+#define CLASS_BALISE_HPP
+
+#include <vector>
 #include "Point.hpp"
 #include "BALISE_CONFIG.hpp"
 
@@ -6,30 +9,16 @@
 /**
  * Represents a beacon
  */
-class Balise
+class Balise : public Point
 {
-	private:
-		int ID;
-		Point origine;
+
 	public:
-		
+		int ID;
 		Balise(int x,int y,int id);
 		
-		/**
-		 * Get beacon data
-		 */
-		int get_ID();
-		int get_X();
-		int get_Y();
-		
-		/**
-		 * Set beacon location
-		 */
-		void setX(int x);
-		void setY(int y);
-		
-		
-		
+		void move_Near(		
 
 
 };
+
+#endif

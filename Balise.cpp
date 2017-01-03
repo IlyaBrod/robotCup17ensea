@@ -1,12 +1,8 @@
 #include "Balise.hpp"
 
-Balise::Balise(int x,int y,int id)
+Balise::Balise(int x,int y,int id) : Point(x,y)
 {
-	origine = Point(x,y);
 	ID = id;
 }
-
-
-
 
 
