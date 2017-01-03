@@ -1,23 +1,33 @@
 #include "MapAnalyser.hpp"
 
 MapAnalyser::MapAnalyser()
-{
-	beaconArray = new double[6];
-	loop = 0;
+{	
 	loopOnce=false;
 	ennemyBeacon=false;
+	
+	int number = 0;
+	int mode = 1;
 }
 
-
-void MapAnalyser::round()
+void MapAnalyser::add_Angle(double angle)
 {
-	if(loop==2)
-	{
-		loop+=1;
-		loopOnce=true;
-	}
+	anglesArray_raw.push_back(angle);
 }
 
+int MapAnalyser::count()
+{
+	return number;
+}
+
+int MapAnalyser::get_Mode()
+{
+	return mode;
+}
+
+std::vector<double>* MapAnalyser::get_Data()
+{
+	return &anglesArray_curr;
+}
 
 char MapAnalyser::get_Side()
 {
@@ -29,7 +39,7 @@ char MapAnalyser::get_Side()
 	{
 		if(ennemyBeacon==false)
 		{
-			if(beaconArray[0]<beaconArray[1] && beaconArray[1]<beaconArray[2])
+			if(anglesArray_curr[0]<anglesArray_curr[1] && anglesArray_curr[1]<anglesArray_curr[2])
 			{
 				return 2;
 			}
@@ -40,7 +50,7 @@ char MapAnalyser::get_Side()
 		}
 		else
 		{
-			if(beaconArray[2]<100)
+			if(anglesArray_curr[2]<100)
 			{
 				return 2;
 			}
@@ -52,3 +62,19 @@ char MapAnalyser::get_Side()
 	}
 }
 
+
+
+void MapAnalyser::update()
+{
+	anglesArray_prev = anglesArray_curr;
+	anglesArray_curr.clear();
+	loopOnce=true;
+	correct_Data();
+	
+}
+
+void MapAnalyser::correct_Data()
+{
+	
+	
+}
