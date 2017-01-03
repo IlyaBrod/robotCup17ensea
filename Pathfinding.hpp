@@ -6,12 +6,12 @@
 
 class Pathfinding : public Map{
 	protected :
-		Treenode_pathfinding *root ;
+		TreenodePathfinding *root ;
 		Point *path ;
 	public :
-		Treenode_pathfinding();
-		Treenode_pathfinding(const Point &origine);
-		~Treenode_pathfinding();
+		Pathfinding();
+		Pathfinding(const Point &origine);
+		~Pathfinding();
 
 		void buildTree(const Point& ori, const Point& dest);
 };

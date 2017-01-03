@@ -1,5 +1,8 @@
 #ifndef CLASS_POINT_DEFINED
 #define CLASS_POINT_DEFINED
+
+#define NULL 0
+
 /**
  * Représente un point dans l'escpace 2D.
  * Position X,Y

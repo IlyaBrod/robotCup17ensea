@@ -9,7 +9,6 @@ class TreenodePathfinding ;
 
 class TreenodePathfinding{
 	public :
-		//CALL init() before using this class
 		static int nbnodes ;
 
 		TreenodePathfinding* father ;
@@ -18,14 +17,12 @@ class TreenodePathfinding{
 		Point point ;
 		double dist ;
 
-
-
-		static void init()const{nbnodes = 0 ;}
-
 		TreenodePathfinding(const Point &p);
-		TreenodePathfinding(const Point &p, const TreenodePathfinding* &father);
+		TreenodePathfinding(const Point &p, TreenodePathfinding* &father);
 		~TreenodePathfinding();
 
 };
+
+int TreenodePathfinding::nbnodes = 0 ;
 
 #endif

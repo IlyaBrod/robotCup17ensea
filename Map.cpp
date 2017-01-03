@@ -3,9 +3,9 @@
 Map::Map(): obstacles(NULL), nbRect(0){}
 
 Map::~Map(){
-	delete obstacles[];
+	delete []obstacles;
 }
 
 void Map::init(){
-	
+
 }

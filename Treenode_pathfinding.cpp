@@ -2,7 +2,7 @@
 
 TreenodePathfinding::TreenodePathfinding(const Point &p): point(p), dist(0.0){}
 
-TreenodePathfinding::TreenodePathfinding(const Point &pconst TreenodePathfinding* &_father): point(p), father(_father), leftson(NULL), rightson(NULL), point(){
+TreenodePathfinding::TreenodePathfinding(const Point &p, TreenodePathfinding* &_father): father(_father), leftson(NULL), rightson(NULL), point(p){
 	nbnodes ++ ;
 }
 
@@ -18,10 +18,6 @@ TreenodePathfinding::~TreenodePathfinding(){
 	nbnodes-- ;
 }
 
-void TreenodePathfinding::set_point(const Point &p){
-	point = p ;
-}
-
 void build_tree(const Point &dest){
-	
+
 }
