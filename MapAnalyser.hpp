@@ -3,6 +3,9 @@
 
 #include <vector>
 
+#define EPSILON 0.11
+#define MOVE_EPSILON 10
+
 /**
  * Analyse the scanned map, to define the most efficient location
  * calculating method.\n
@@ -17,7 +20,6 @@ class MapAnalyser
 		bool loopOnce;
 		bool ennemyBeacon;
 		
-		int number;
 		int mode;
 		
 		std::vector<double> anglesArray_prev;
@@ -25,14 +27,15 @@ class MapAnalyser
 		std::vector<double> anglesArray_raw;
 		
 		void correct_Data();
-		
+		void set_Mode();
+
 	public:
 	
 		MapAnalyser();
 		
 		/**
 		 * Add an angle to the system.
-		 * @param angle
+		 * @param angle represents a variation of sensor data
 		 */
 		void add_Angle(double angle);
 		
