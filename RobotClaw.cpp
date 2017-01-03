@@ -13,7 +13,7 @@ RoboClaw::RoboClaw(uint8_t adr, int baudrate, PinName rx, PinName tx) : _robocla
 void RoboClaw::crc_clear(){
     crc = 0;
 }
-
+//comm
 void RoboClaw::crc_update (uint8_t data){
     int i;
     crc = crc ^ ((uint16_t)data << 8);
@@ -24,6 +24,7 @@ void RoboClaw::crc_update (uint8_t data){
             crc <<= 1;
     }
 }
+//TEST
 
 uint16_t RoboClaw::crc_get(){
     return crc;

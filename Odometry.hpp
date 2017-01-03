@@ -17,7 +17,11 @@
 #define vitesse_dista 12000
 #define deccel_dista 12000
  
+<<<<<<< HEAD
 /* Si le robot parcourt un trop grand angle, il diminue l'entraxe, sinon l'augmenter */
+=======
+/* Si le robot parcourt un trop grand angle, il diminuer l'entraxe, sinon l'augmenter */
+>>>>>>> refs/remotes/origin/nicolas_dev
 #define ENTRAXE 243.8
  
 /*
