@@ -1,20 +1,5 @@
 #include "MapAnalyser.hpp"
 
-double abs(double);
-
-double abs(double val)
-{
-	if(val<0)
-	{
-		return -val;
-	}
-	else
-	{
-		return val;
-	}
-	
-}
-
 MapAnalyser::MapAnalyser()
 {	
 	loopOnce=false;

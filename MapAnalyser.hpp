@@ -2,7 +2,7 @@
 #define CLASS_MAPaNALYZER
 
 #include <vector>
-#include <math.h>
+#include <myMaths.hpp>
 
 #define EPSILON 0.11
 #define MOVE_EPSILON 10

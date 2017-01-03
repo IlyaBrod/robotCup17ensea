@@ -4,7 +4,7 @@
 
 Point* triangulate(double* anglesArray,int mode)
 {
-	Point* loc = new Point()
+	Point* loc = new Point();
 	
 	return loc;
 }
