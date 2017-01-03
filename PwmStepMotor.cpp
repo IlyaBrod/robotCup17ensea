@@ -3,8 +3,10 @@
 
 
 using namespace std;
-PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 1,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0):pwmMoteur(pwmOut)
+PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us,float pwmCycle, int nombreDeStepParTour, int pwmDir):pwmMoteur(pwmOut)
 {
+	pwmMoteur.period_us(pwmPeriode_us);
+	pwmMoteur.write(pwmCycle);
 	angle = 0;
 }
 
@@ -40,6 +42,7 @@ void PwmStepMotor::start()
 	lastTime = GeneralItem::sinceInitUsTimer.read();
 	pwmMoteur.period_us(pwmPeriode_us);
 	pwmMoteur.write(pwmCycle);
+	
 }
 
 void PwmStepMotor::stop()

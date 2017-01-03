@@ -7,17 +7,21 @@
 #include "IncludeAll.h"
 
 
-//DigitalOut myled(LED1);
+DigitalOut myled(LED1);
 //Point p(5,6,10);
-PwmStepMotor(D6);
+//PwmStepMotor mypwm(D5);
+PwmOut myPwm(D6);
 
 int main() {
-	GeneralItem::initGeneralItem();
+	//GeneralItem::initGeneralItem();
+	//mypwm.start();
+	myPwm.period_ms(20);
+	myPwm.write(0.5);
     while(1) {
-        //myled = 1;
-        //wait(0.2);
-        //myled = 0;
-        //wait(0.2);
+        myled = 1;
+        wait(1);
+        myled = 0;
+        wait(1);
     }
 }
 
