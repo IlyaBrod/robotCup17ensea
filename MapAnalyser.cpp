@@ -147,9 +147,7 @@ void MapAnalyser::correct_Data()
 		
 		}	
 			
-						
-		
-		
+			
 		//ERROR TYP 3 : extra small angles
 		
 		toErase.clear();

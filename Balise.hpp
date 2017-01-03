@@ -15,8 +15,7 @@ class Balise : public Point
 	public:
 		int ID;
 		Balise(int x,int y,int id);
-		
-		void move_Near(		
+		void move_Near(&std::vector<Balise> baliseArray);
 
 
 };
