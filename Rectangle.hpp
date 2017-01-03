@@ -15,7 +15,9 @@ class Rectangle{
 
 	public :
 		Rectangle(): A(), B(), C(), D(){}
+		Rectangle(const Point &P, const Point &Q);
 		Rectangle(const Point &A, const Point &B, const Point &C, const Point&D);
+		bool intersect(const Rectangle &rect);
 };
 
 #endif

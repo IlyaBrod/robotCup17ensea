@@ -5,8 +5,8 @@
 
 class Map{
 	private :
-		static Rectangle* obstacles;
-		static int nbRect ;
+		Rectangle* obstacles;
+		int nbRect ;
 	public :
 		Map();
 		~Map();
