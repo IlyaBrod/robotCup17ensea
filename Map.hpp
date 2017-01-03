@@ -4,7 +4,7 @@
 #include "Rectangle.hpp"
 
 class Map{
-	private :
+	protected :
 		Rectangle* obstacles;
 		int nbRect ;
 	public :
