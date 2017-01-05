@@ -32,3 +32,8 @@ Point& Point::operator=(const Point& p){
 	
 	return *this;
 }
+
+float Point::get_Norm()
+{
+	return sqrt(X*X+Y*Y);
+}
