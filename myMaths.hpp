@@ -32,13 +32,13 @@ template<typename T> float pwr(T value,int n)
 	}
 }
 
-template<typename T> float sqrt(T value,int n=1000)
+template<typename T> float sqrt(T value,int n=50)
 {
-	float res=value/2;
+	T res=value/2;
 	
 	for(int i=0;i<n;i++)
 	{
-		res= 1/2 * (res+value/res)
+		res= 1/2 * (res+value/res);
 	}
 	return res;
 }
