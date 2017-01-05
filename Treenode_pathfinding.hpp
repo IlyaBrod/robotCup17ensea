@@ -3,24 +3,20 @@
 
 #include "Map.hpp"
 
-#define MAX_NODES 255
-
 class TreenodePathfinding ;
 
 class TreenodePathfinding{
 	public :
-		static int nbnodes ;
-
 		TreenodePathfinding* father ;
-		TreenodePathfinding* leftson ;
-		TreenodePathfinding* rightson ;
 		Point point ;
-		double dist ;
+		double distOri ;
+		double distDest ;
 
 		TreenodePathfinding(const Point &p);
-		TreenodePathfinding(const Point &p, TreenodePathfinding* &father);
+		TreenodePathfinding(const Point &p, const Point &dest, TreenodePathfinding* &father);
 		~TreenodePathfinding();
 
+		bool operator<(const TreenodePathfinding* &node);
 };
 
 //int TreenodePathfinding::nbnodes = 0 ;
