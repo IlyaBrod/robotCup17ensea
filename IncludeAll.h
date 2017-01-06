@@ -3,9 +3,9 @@
 #define INCLUDEALL_H
 
 #include "mbed.h"
-#include "Point.hpp"
-#include "GeneralItem.h"
-#include "PwmStepMotor.h"
+#include "General/Point.hpp"
+#include "General/GeneralItem.h"
+#include "Lidar/Sensor/PwmStepMotor.h"
 
 
 
