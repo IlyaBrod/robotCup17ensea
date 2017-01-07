@@ -1,10 +1,13 @@
+#ifndef MATHS_HPP
+#define MATHS_HPP
+
 /**
  * Return the maximum between 2 elements
  * @param a
  * @param b
  * @return the max
  */
-template<typename T> T min(T a,Tb)
+template<typename T> T min(T a,T b)
 {
 	if(a>b)
 	{
@@ -94,4 +97,4 @@ template<typename T> float sqrt(T value,int n=50)
 	return res;
 }
 
-
+#endif
