@@ -2,9 +2,16 @@
 
 MapAnalyser::MapAnalyser()
 {	
+	for(int i=0;i<6;i++)
+	{
+		anglesArray_curr.push_back(Balise());
+		anglesArray_curr.at(i).ID=i;
+	}
+	
+	
 	loopOnce=false;
 	ennemyBeacon=false;
-	
+	endByTop=false;
 	mode = 1;
 }
 
@@ -23,7 +30,7 @@ int MapAnalyser::get_Mode()
 	return mode;
 }
 
-std::vector<double>* MapAnalyser::get_Data()
+std::vector<Balise>* MapAnalyser::get_Data()
 {
 	return &anglesArray_curr;
 }
@@ -75,16 +82,40 @@ void MapAnalyser::update()
 void MapAnalyser::correct_Data()
 {
 	
-	double toNext;
-	double expectedError;
-	
+	double part1,part2;
+	bool state = endByTop;
 	std::vector<int> toErase;
 	
 	if(anglesArray_raw.size()!=0)
 	{
+		//ERROR TYPE 0 : Reset zone on the beacon
+		
+		
+		
 		//ERROR TYP 1 : Check beacons middle mask
-		for(unsigned int i=0;i<anglesArray_raw.size();i+=4)
+		for(unsigned int i=0;i<anglesArray_raw.size();i++)
 		{
+			//invert state
+			if(state==true)
+			{
+				state=false;
+			}
+			else
+			{
+				state=true;
+			}
+			
+			
+			if(endByTop==false)
+			{
+				part1 = anglesArray_raw.at(i+1)-anglesArray_raw.at(i);
+				part2 = anglesArray_raw.at(i+2)-anglesArray_raw.at(i+1);
+			}
+			else
+			{
+				
+			}
+			
 			toNext = anglesArray_raw.at(i+3)-anglesArray_raw.at(i+4);
 			expectedError = anglesArray_raw.at(i+2)-anglesArray_raw.at(i+1);
 			
