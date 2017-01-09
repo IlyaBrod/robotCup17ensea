@@ -15,10 +15,12 @@ class Balise : public Point
 {
 	private:
 		bool active;
-		float delta;
+		
 	public:
 		int ID;
+		float DELTA;
 		Balise();
+		Balise(int ID);
 		Balise(int x,int y,int id);
 		
 		/**
@@ -28,11 +30,6 @@ class Balise : public Point
 		void desactivate();
 		bool get_State();
 	
-		/**
-		 * Affect delta value
-		 */
-		float get_Delta();
-		void set_Delta(float d);
 };
 
 #endif

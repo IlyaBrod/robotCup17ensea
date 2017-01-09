@@ -37,35 +37,7 @@ std::vector<Balise>* MapAnalyser::get_Data()
 
 char MapAnalyser::get_Side()
 {
-	if(loopOnce==false)
-	{
-		return 0;
-	}
-	else
-	{
-		if(ennemyBeacon==false)
-		{
-			if(anglesArray_curr[0]<anglesArray_curr[1] && anglesArray_curr[1]<anglesArray_curr[2])
-			{
-				return 2;
-			}
-			else
-			{
-				return 1;
-			}
-		}
-		else
-		{
-			if(anglesArray_curr[2]<100)
-			{
-				return 2;
-			}
-			else
-			{
-				return 1;
-			}
-		}
-	}
+	return side;
 }
 
 
@@ -81,7 +53,7 @@ void MapAnalyser::update()
 
 void MapAnalyser::correct_Data()
 {
-	
+	/*
 	double part1,part2;
 	bool state = endByTop;
 	std::vector<int> toErase;
@@ -185,7 +157,7 @@ void MapAnalyser::correct_Data()
 		
 		
 		
-	}
+	}*/
 }
 
 
@@ -204,4 +176,49 @@ void MapAnalyser::set_Mode()
 	{
 		mode=2;
 	}
+}
+
+void MapAnalyser::detect_ennemy()
+{
+	if(anglesArray_raw.size()>6)
+	{	
+		for(int i=0;i<6;i++)
+		{
+			anglesArray_curr.push_back(Balise(i));	
+		}
+		
+		ennemyBeacon=true;
+	}
+	else
+	{
+		for(int i=0;i<3;i++)
+		{
+			anglesArray_curr.push_back(Balise(i));	
+		}
+		ennemyBeacon=false;
+	}
+}
+
+void MapAnalyser::detect_side()
+{
+	
+}
+
+void MapAnalyser::first_Scan()
+{
+	
+	
+}
+
+void MapAnalyser::direct_convert()
+{
+	int j=0;
+	for(int i=0;i<anglesArray_raw.size();i+=2)
+	{
+		anglesArray_curr.at(j).ANGLE = anglesArray_raw.at(i);
+		anglesArray_curr.at(j).DELTA = anglesArray_raw.at(i+1)-anglesArray_raw.at(i);
+		j++;
+	}
+	
+	
 }

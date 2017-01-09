@@ -6,6 +6,11 @@ Balise::Balise() : Point()
 	delta=0;
 }
 
+Balise::Balise(int id) : Point()
+{
+	ID=id;
+}
+
 Balise::Balise(int x,int y,int id) : Point(x,y)
 {
 	ID = id;
@@ -28,13 +33,4 @@ bool Balise::get_State()
 	return active;
 }
 
-float Balise::get_Delta()
-{
-	return delta;
-}
-
-void Balise::set_Delta(float d)
-{
-	delta=d;
-}
 

@@ -1,4 +1,5 @@
-
+#ifndef MYMATHS_HPP
+#define MYMATHS_HPP
 
 template<typename T> T abs(T value)
 {
@@ -43,4 +44,5 @@ template<typename T> float sqrt(T value,int n=50)
 	return res;
 }
 
+#endif
 
