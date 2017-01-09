@@ -39,6 +39,7 @@ class MapAnalyser
 		 * gives a viable data.
 		 */
 		void correct_Data();
+		
 		void set_Mode();
 
 		/** #1

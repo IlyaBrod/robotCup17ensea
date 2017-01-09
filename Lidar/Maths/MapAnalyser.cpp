@@ -42,7 +42,15 @@ char MapAnalyser::get_Side()
 	return side;
 }
 
-
+float get_Orientation()
+{
+	for(unsigned int i;i<anglesArray_curr.size();i++)
+	{
+		
+	}
+	
+	return 0.0;
+}
 
 // 																 PRIVATE
 
