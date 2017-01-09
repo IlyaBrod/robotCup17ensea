@@ -88,7 +88,7 @@ class MapAnalyser
 		 * Get the cleaned angle array
 		 * @return vector of values
 		 */
-		std::vector<double>* get_Data();
+		std::vector<Balise>* get_Data();
 		
 		
 		/**

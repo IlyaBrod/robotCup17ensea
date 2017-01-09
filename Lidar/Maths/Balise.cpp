@@ -3,7 +3,7 @@
 Balise::Balise() : Point()
 {
 	ID = 0;
-	delta=0;
+	DELTA=0;
 }
 
 Balise::Balise(int id) : Point()
@@ -14,7 +14,7 @@ Balise::Balise(int id) : Point()
 Balise::Balise(int x,int y,int id) : Point(x,y)
 {
 	ID = id;
-	delta=0;
+	DELTA=0;
 }
 
 

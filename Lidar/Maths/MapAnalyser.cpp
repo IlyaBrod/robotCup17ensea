@@ -213,7 +213,7 @@ void MapAnalyser::first_Scan()
 void MapAnalyser::direct_convert()
 {
 	int j=0;
-	for(int i=0;i<anglesArray_raw.size();i+=2)
+	for(unsigned int i=0;i<anglesArray_raw.size();i+=2)
 	{
 		anglesArray_curr.at(j).ANGLE = anglesArray_raw.at(i);
 		anglesArray_curr.at(j).DELTA = anglesArray_raw.at(i+1)-anglesArray_raw.at(i);
