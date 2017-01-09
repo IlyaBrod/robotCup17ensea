@@ -1,7 +1,7 @@
 #ifndef CLASS_MAP_DEFINED
 #define CLASS_MAP_DEFINED
 
-#include "../General/Rectangle.hpp"
+#include "Rectangle.hpp"
 
 class Map{
 	protected :

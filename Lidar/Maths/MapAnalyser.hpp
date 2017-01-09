@@ -61,6 +61,7 @@ class MapAnalyser
 		 */
 		void direct_convert();
 
+
 	public:
 	
 		MapAnalyser();
@@ -82,12 +83,6 @@ class MapAnalyser
 		 * @return mode
 		 */
 		int get_Mode();
-		
-		/**
-		 * Get the orientation of the robot (angle from Y ground axis)
-		 * @return angle [degree]
-		 */
-		float get_Orientation();
 		
 		/**
 		 * Get the cleaned angle array
