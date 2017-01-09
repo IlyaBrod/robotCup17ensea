@@ -8,6 +8,8 @@
 
 /**
  * Represents a beacon
+ * ANGLE = angle of localisation
+ * DELTA = angle of observation
  */
 class Balise : public Point
 {
