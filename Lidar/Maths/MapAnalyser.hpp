@@ -2,7 +2,8 @@
 #define CLASS_MAPaNALYZER
 
 #include <vector>
-#include <../../General/myMaths.hpp>
+#include "../../General/myMaths.hpp"
+#include "Balise.hpp"
 
 #define EPSILON 0.11
 #define MOVE_EPSILON 10
@@ -23,10 +24,17 @@ class MapAnalyser
 		
 		int mode;
 		
-		std::vector<double> anglesArray_prev;
-		std::vector<double> anglesArray_curr;
-		std::vector<double> anglesArray_raw;
+		std::vector<Balise> anglesArray_prev;
+		std::vector<Balise> anglesArray_curr;
+		std::vector<float> anglesArray_raw;
 		
+		//True if the scanning cycles ended by a high value
+		bool endByTop;
+		/**
+		 * Correct the detections errors,
+		 * construct a beacons map, detect number of beacons which 
+		 * gives a viable data.
+		 */
 		void correct_Data();
 		void set_Mode();
 

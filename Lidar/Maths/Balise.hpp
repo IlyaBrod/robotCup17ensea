@@ -11,13 +11,26 @@
  */
 class Balise : public Point
 {
-
+	private:
+		bool active;
+		float delta;
 	public:
 		int ID;
+		Balise();
 		Balise(int x,int y,int id);
 		
-
-
+		/**
+		 * Change the state of the beacon
+		 */
+		void activate();
+		void desactivate();
+		bool get_State();
+	
+		/**
+		 * Affect delta value
+		 */
+		float get_Delta();
+		void set_Delta(float d);
 };
 
 #endif
