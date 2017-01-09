@@ -102,11 +102,6 @@ class MapAnalyser
 		 */ 
 		char get_Side();
 		
-
-		/**
-		 * To execute after a 360° round of the sensor.
-		 */
-		void update();
 		
 };
 

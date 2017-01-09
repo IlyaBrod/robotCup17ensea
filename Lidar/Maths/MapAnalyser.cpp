@@ -1,5 +1,7 @@
 #include "MapAnalyser.hpp"
 
+// 																 PUBLIC
+
 MapAnalyser::MapAnalyser()
 {	
 	for(int i=0;i<6;i++)
@@ -42,13 +44,51 @@ char MapAnalyser::get_Side()
 
 
 
-void MapAnalyser::update()
+// 																 PRIVATE
+
+void MapAnalyser::first_Scan()
 {
-	anglesArray_prev = anglesArray_curr;
-	anglesArray_curr.clear();
-	loopOnce=true;
-	correct_Data();
 	
+	
+}
+
+void MapAnalyser::direct_convert()
+{
+	int j=0;
+	for(unsigned int i=0;i<anglesArray_raw.size();i+=2)
+	{
+		anglesArray_curr.at(j).ANGLE = anglesArray_raw.at(i);
+		anglesArray_curr.at(j).DELTA = anglesArray_raw.at(i+1)-anglesArray_raw.at(i);
+		j++;
+	}
+	
+	
+}
+
+void MapAnalyser::detect_side()
+{
+	
+}
+
+void MapAnalyser::detect_ennemy()
+{
+	if(anglesArray_raw.size()>6)
+	{	
+		for(int i=0;i<6;i++)
+		{
+			anglesArray_curr.push_back(Balise(i));	
+		}
+		
+		ennemyBeacon=true;
+	}
+	else
+	{
+		for(int i=0;i<3;i++)
+		{
+			anglesArray_curr.push_back(Balise(i));	
+		}
+		ennemyBeacon=false;
+	}
 }
 
 void MapAnalyser::correct_Data()
@@ -160,7 +200,6 @@ void MapAnalyser::correct_Data()
 	}*/
 }
 
-
 void MapAnalyser::set_Mode()
 {
 	int nbr = count();
@@ -178,47 +217,3 @@ void MapAnalyser::set_Mode()
 	}
 }
 
-void MapAnalyser::detect_ennemy()
-{
-	if(anglesArray_raw.size()>6)
-	{	
-		for(int i=0;i<6;i++)
-		{
-			anglesArray_curr.push_back(Balise(i));	
-		}
-		
-		ennemyBeacon=true;
-	}
-	else
-	{
-		for(int i=0;i<3;i++)
-		{
-			anglesArray_curr.push_back(Balise(i));	
-		}
-		ennemyBeacon=false;
-	}
-}
-
-void MapAnalyser::detect_side()
-{
-	
-}
-
-void MapAnalyser::first_Scan()
-{
-	
-	
-}
-
-void MapAnalyser::direct_convert()
-{
-	int j=0;
-	for(unsigned int i=0;i<anglesArray_raw.size();i+=2)
-	{
-		anglesArray_curr.at(j).ANGLE = anglesArray_raw.at(i);
-		anglesArray_curr.at(j).DELTA = anglesArray_raw.at(i+1)-anglesArray_raw.at(i);
-		j++;
-	}
-	
-	
-}
