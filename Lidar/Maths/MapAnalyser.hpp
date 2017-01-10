@@ -8,6 +8,8 @@
 #define EPSILON 0.11
 #define MOVE_EPSILON 10
 
+typedef enum{YELLOW,BLUE} TeamColor;
+
 /**
  * Analyse the scanned map, to define the most efficient location
  * calculating method.\n
@@ -23,6 +25,7 @@ class MapAnalyser
 		bool ennemyBeacon;
 		
 		int mode;
+		TeamColor side;
 		
 		std::vector<Balise> anglesArray_prev;
 		std::vector<Balise> anglesArray_curr;
@@ -36,7 +39,28 @@ class MapAnalyser
 		 * gives a viable data.
 		 */
 		void correct_Data();
+		
 		void set_Mode();
+
+		/** #1
+		 * Configure the number of beacons after the first scan round
+		 */
+		void detect_ennemy();
+		
+		/**
+		 * Detect the color side of the robot
+		 */
+		void detect_side();
+
+		/**
+		 * Scan to run after the first round
+		 */
+		void first_Scan();
+		
+		/** #2
+		 * Convert raw to balise assuming no errors
+		 */
+		void direct_convert();
 
 	public:
 	
@@ -61,10 +85,16 @@ class MapAnalyser
 		int get_Mode();
 		
 		/**
+		 * Get the orientation of the robot (angle from Y ground axis)
+		 * @return angle [degree]
+		 */
+		float get_Orientation();
+		
+		/**
 		 * Get the cleaned angle array
 		 * @return vector of values
 		 */
-		std::vector<double>* get_Data();
+		std::vector<Balise>* get_Data();
 		
 		
 		/**
@@ -73,11 +103,6 @@ class MapAnalyser
 		 */ 
 		char get_Side();
 		
-		
-		/**
-		 * To execute after a 360° round of the sensor.
-		 */
-		void update();
 		
 };
 

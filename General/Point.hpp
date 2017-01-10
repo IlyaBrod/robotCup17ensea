@@ -1,11 +1,8 @@
 #ifndef CLASS_POINT_DEFINED
 #define CLASS_POINT_DEFINED
 
-<<<<<<< HEAD:Point.hpp
-#define NULL 0
-=======
 #include "myMaths.hpp"
->>>>>>> refs/remotes/origin/master:General/Point.hpp
+
 
 /**
  * Représente un point dans l'escpace 2D.

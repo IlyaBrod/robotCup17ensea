@@ -8,15 +8,19 @@
 
 /**
  * Represents a beacon
+ * ANGLE = angle of localisation
+ * DELTA = angle of observation
  */
 class Balise : public Point
 {
 	private:
 		bool active;
-		float delta;
+		
 	public:
 		int ID;
+		float DELTA;
 		Balise();
+		Balise(int ID);
 		Balise(int x,int y,int id);
 		
 		/**
@@ -24,7 +28,8 @@ class Balise : public Point
 		 */
 		void activate();
 		void desactivate();
-		bool getState();
+		bool get_State();
+	
 };
 
 #endif
