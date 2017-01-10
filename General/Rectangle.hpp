@@ -1,6 +1,7 @@
 #ifndef CLASS_RECTANGLE_DEFINED
 #define CLASS_RECTANGLE_DEFINED
 
+#include "GeneralFunctions.hpp"
 #include "Point.hpp"
 
 /**
