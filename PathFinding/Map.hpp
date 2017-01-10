@@ -3,9 +3,11 @@
 
 #include "Rectangle.hpp"
 
+#define NBRECTS 16
+
 class Map{
 	protected :
-		Rectangle* obstacles;
+		Rectangle obstacles[NBRECTS];
 		int nbRect ;
 	public :
 		Map();

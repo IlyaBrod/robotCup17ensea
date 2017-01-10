@@ -1,7 +1,6 @@
 #ifndef CLASS_RECTANGLE_DEFINED
 #define CLASS_RECTANGLE_DEFINED
 
-#include "myMaths.hpp"
 #include "Point.hpp"
 
 /**
@@ -10,14 +9,15 @@
  *	D------C
 **/
 
-class Rectangle{
-	private :
-		Point A,B,C,D ;
-
+struct Rectangle : public Point{
 	public :
-		Rectangle(): A(), B(), C(), D(){}
+		double w ; //width
+		double h ; //height
+
+		Rectangle();
 		Rectangle(const Point &P, const Point &Q);
-		Rectangle(const Point &A, const Point &B, const Point &C, const Point&D);
+		Rectangle(const double &x, const double &y, const double &w, const double &h);
+
 		bool intersect(const Rectangle &rect);
 };
 

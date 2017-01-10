@@ -1,14 +1,15 @@
 #include "Rectangle.hpp"
 
-Rectangle::Rectangle(const Point &_A, const Point &_B, const Point &_C, const Point&_D): A(_A), B(_B), C(_C), D(_D){}
+Rectangle::Rectangle(): Point(), w(0.0), h(0.0){}
 
 Rectangle::Rectangle(const Point &P, const Point &Q){
-	A.X = min(P.X, Q.X);	A.Y = min(P.Y, Q.Y);
-	B.X = max(P.X, Q.X);	B.Y = A.Y ;
-	C.X = B.X ;				C.Y = max(P.Y, Q.Y);
-	D.X = A.X ;             D.Y = C.Y ;
+	x = std::min(P.x, Q.x);     y = std::min(P.y, Q.y);
+	w = std::max(P.x, Q.x)-x ;  h = std::max(P.y, Q.y)-y ;
 }
 
+Rectangle::Rectangle(const double &_x, const double &_y, const double &_w, const double &_h):
+    Point(_x, _y), w(_w), h(_h){}
+
 bool Rectangle::intersect(const Rectangle &rect){
-	return (max(A.X, rect.A.X) <= min(C.X, rect.C.X)) && (max(A.Y, rect.A.Y) <= min(C.Y, rect.C.Y));
+	return (std::max(x, rect.x) <= std::min(x+w, rect.x+rect.w)) && (std::max(y, rect.y) <= std::min(y+h, rect.y+rect.h));
 }

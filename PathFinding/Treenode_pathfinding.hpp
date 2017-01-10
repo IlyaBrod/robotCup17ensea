@@ -3,20 +3,20 @@
 
 #include "Map.hpp"
 
-class TreenodePathfinding ;
+struct TreenodePathfinding ;
 
-class TreenodePathfinding{
+struct TreenodePathfinding{
 	public :
 		TreenodePathfinding* father ;
-		Point point ;
-		double distOri ;
-		double distDest ;
+		Point p ;
+		double distOri ;    //distance from ori
+		double distDest ;   //distance to goal
 
 		TreenodePathfinding(const Point &p);
-		TreenodePathfinding(const Point &p, const Point &dest, TreenodePathfinding* &father);
+		TreenodePathfinding(const Point &p, const Point &dest, TreenodePathfinding* father);
 		~TreenodePathfinding();
 
-		bool operator<(const TreenodePathfinding* &node);
+		bool operator<(const TreenodePathfinding &node);
 };
 
 //int TreenodePathfinding::nbnodes = 0 ;
