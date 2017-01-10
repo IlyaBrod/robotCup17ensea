@@ -28,6 +28,9 @@
 *   Author : Benjamin Bertelone, reworked by Simon Emarre
 */
  
+#define SDevant false
+#define SHomologation false
+
 extern Serial logger;
  
 /** Permet la gestion de l'odometrie du robot **/
