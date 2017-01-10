@@ -19,6 +19,7 @@ class Balise : public Point
 	public:
 		int ID;
 		float DELTA;
+		float DIST;
 		Balise();
 		Balise(int ID);
 		Balise(int x,int y,int id);

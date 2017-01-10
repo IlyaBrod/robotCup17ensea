@@ -1,6 +1,8 @@
 #include "../../General/Point.hpp"
-
-
+#include "BALISE_CONFIG.hpp"
+#include "Balise.hpp"
+#include <cmath>
+#include "../General/myMaths.hpp"
 /**
  * Return a point representating the location and orientation of the robot.\n
  * Modes :\n
@@ -12,5 +14,18 @@
  * @param mode Mode of triangulisation
  */
 Point* triangulate(double* anglesArray,int mode);
+
+/**
+ * Compute the distance between a beacon to the robot.
+ * @param angle Angle of observation [degree]
+ * @return distance in cm
+ */
+float compute_dist(float angle);
+
+/**
+ * Compute the distance for a beacon.
+ * @param &b beacon reference
+ */
+void compute_dist(Balise &b);
 
 

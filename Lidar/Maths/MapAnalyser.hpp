@@ -59,6 +59,7 @@ class MapAnalyser
 		
 		/** #2
 		 * Convert raw to balise assuming no errors
+		 * (grouping 2 per 2 angles), hold the save IDs
 		 */
 		void direct_convert();
 

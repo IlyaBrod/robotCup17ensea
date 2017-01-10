@@ -75,7 +75,14 @@ void MapAnalyser::direct_convert()
 
 void MapAnalyser::detect_side()
 {
-	
+	if(ennemyBeacon==true)
+	{
+		
+	}
+	else
+	{
+		
+	}
 }
 
 void MapAnalyser::detect_ennemy()

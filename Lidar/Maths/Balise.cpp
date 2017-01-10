@@ -4,18 +4,21 @@ Balise::Balise() : Point()
 {
 	ID = 0;
 	DELTA=0;
+	DIST=0;
 }
 
 Balise::Balise(int id) : Point()
 {
 	ID=id;
 	DELTA=0;
+	DIST=0;
 }
 
 Balise::Balise(int x,int y,int id) : Point(x,y)
 {
 	ID = id;
 	DELTA=0;
+	DIST=0;
 }
 
 
