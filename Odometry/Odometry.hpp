@@ -4,8 +4,8 @@
 //#include "DefinesSharps.h"
 #include "mbed.h"
 #include "../Motorisation/RobotClaw.h"
+#include "../General/myMaths.hpp"
  
-#define PI 3.1415926535897932384626433832795
 #define C 1.0
  
 /* Vitesse d'acceleration d'angle reduite de 8000->4000 */
