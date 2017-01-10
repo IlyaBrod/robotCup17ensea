@@ -276,6 +276,10 @@ void MapAnalyser::set_Mode()
 
 void MapAnalyser::refresh()
 {
+	std::vector<Balise> interList;
+	auto it = interList.cbegin()
+	int idx;
+	
 	//Copy CURR to PREV
 	anglesArray_prev.clear();
 	anglesArray_prev=anglesArray_curr;
@@ -291,6 +295,20 @@ void MapAnalyser::refresh()
 	}
 	else if(anglesArray_curr.size()<anglesArray_prev.size())
 	{ //there is less beacons than before
+		interList = anglesArray_prev;
+		
+		for(unsigned int i;i<anglesArray_curr.size();i++)
+		{
+			idx=track(anglesArray_curr.at(i));
+			
+			if(idx!=-1)
+			{
+				anglesArray_curr.at(i).ID = anglesArray_prev.at(idx).ID;
+				interList.erase(it+idx);
+			}
+		
+		}
+		
 		
 	}
 	else

@@ -8,7 +8,7 @@
 
 #define EPSILON 0.11
 #define MOVE_EPSILON 10
-#define TRACK_EPSILON 10.0
+#define TRACK_EPSILON 20.0
 
 typedef enum{YELLOW,BLUE} TeamColor;
 
