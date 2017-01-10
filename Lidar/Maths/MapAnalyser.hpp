@@ -68,6 +68,13 @@ class MapAnalyser
 		 */
 		void direct_convert();
 
+		/**
+		 * Need to be executed when the 0° is send.\n
+		 * Apply error correction, convert RAW to CURR.\n
+		 * Refresh computing mode.\n
+		 */
+		 void refresh();
+
 	public:
 	
 		MapAnalyser();
