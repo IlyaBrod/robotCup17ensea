@@ -26,6 +26,6 @@ float compute_dist(float angle);
  * Compute the distance for a beacon.
  * @param &b beacon reference
  */
-void compute_dist(Balise &b);
+void compute_beacon_dist(Balise &b);
 
 

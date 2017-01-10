@@ -10,7 +10,7 @@ MapAnalyser::MapAnalyser()
 		anglesArray_curr.at(i).ID=i;
 	}
 	
-	
+	initAngles = new float[6];
 	loopOnce=false;
 	ennemyBeacon=false;
 	endByTop=false;
@@ -44,24 +44,32 @@ char MapAnalyser::get_Side()
 
 float MapAnalyser::get_Orientation()
 {
-	for(unsigned int i;i< anglesArray_curr.size();i++)
+	float summ=0;
+	for(unsigned int i; i<anglesArray_curr.size();i++)
 	{
-		
+		summ+=anglesArray_curr.at(i).ANGLE-initAngles[anglesArray_curr.at(i).ID];
 	}
 	
-	return 0.0;
+	return summ/anglesArray_curr.size();
 }
 
 // 																 PRIVATE
 
 void MapAnalyser::first_Scan()
 {
+	direct_convert();
 	
+	//Save initials angles to get orientation
+	for(unsigned int i;i<anglesArray_curr.size();i++)
+	{
+		initAngles[i]=anglesArray_curr.at(i).ANGLE;
+	}
 	
 }
 
 void MapAnalyser::direct_convert()
 {
+	//convert
 	int j=0;
 	for(unsigned int i=0;i<anglesArray_raw.size();i+=2)
 	{
@@ -70,6 +78,11 @@ void MapAnalyser::direct_convert()
 		j++;
 	}
 	
+	//compute dists
+	for(unsigned int i=0;i<anglesArray_curr.size();i++)
+	{
+		compute_beacon_dist(anglesArray_curr.at(i));
+	}
 	
 }
 
@@ -86,6 +99,7 @@ void MapAnalyser::detect_side()
 				side=BLUE;
 			
 			}
+		}
 		else
 		{// d1 > d2
 			if(ennemyBeacon==true)
@@ -96,7 +110,7 @@ void MapAnalyser::detect_side()
 			{
 				side=YELLOW;
 			}
-	}
+		}
 
 }
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include "../../General/myMaths.hpp"
 #include "Balise.hpp"
+#include "triangulation.hpp"
 
 #define EPSILON 0.11
 #define MOVE_EPSILON 10
@@ -30,6 +31,7 @@ class MapAnalyser
 		std::vector<Balise> anglesArray_prev;
 		std::vector<Balise> anglesArray_curr;
 		std::vector<float> anglesArray_raw;
+		float* initAngles;
 		
 		//True if the scanning cycles ended by a high value
 		bool endByTop;
@@ -60,7 +62,8 @@ class MapAnalyser
 		
 		/** #2
 		 * Convert raw to balise assuming no errors
-		 * (grouping 2 per 2 angles), hold the save IDs
+		 * (grouping 2 per 2 angles), hold the save IDs.\n
+		 * Compute distances.
 		 */
 		void direct_convert();
 
