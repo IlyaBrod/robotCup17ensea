@@ -1,3 +1,6 @@
+#ifndef TRIANG_HPP
+#define TRIANG_HPP
+
 #include "../../General/Point.hpp"
 #include "BALISE_CONFIG.hpp"
 #include "Balise.hpp"
@@ -29,3 +32,4 @@ float compute_dist(float angle);
 void compute_beacon_dist(Balise &b);
 
 
+#endif

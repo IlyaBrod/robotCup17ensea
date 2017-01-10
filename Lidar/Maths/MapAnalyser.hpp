@@ -1,5 +1,5 @@
 #ifndef CLASS_MAPANALYZER_HPP
-#define CLASS_MAPaNALYZER
+#define CLASS_MAPANALYZER_HPP
 
 #include <vector>
 #include "../../General/myMaths.hpp"
@@ -45,7 +45,8 @@ class MapAnalyser
 		void set_Mode();
 
 		/** #1
-		 * Configure the number of beacons after the first scan round
+		 * Configure the number of beacons after the first scan round.
+		 * Initialize the IDs of all beacons.
 		 */
 		void detect_ennemy();
 		
@@ -72,8 +73,9 @@ class MapAnalyser
 		MapAnalyser();
 		
 		/**
-		 * Add an angle to the system.
-		 * @param angle represents a variation of sensor data
+		 * Add an angle to the system. After RAISE or FALL\n
+		 * WARNING : Add an 0° angle when the sensor did a round. 
+		 * @param angle represents a variation of sensor data [degree]
 		 */
 		void add_Angle(double angle);
 		

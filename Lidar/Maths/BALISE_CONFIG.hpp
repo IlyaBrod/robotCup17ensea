@@ -1,3 +1,6 @@
+#ifndef BALISECONFIG
+#define BALISECONFIG
+
 //Constantes liés à la balise
 #define RADIUS_B 8.0
 
@@ -16,3 +19,5 @@
 #define D12Y 0.0
 #define D13X 50.0
 #define D13Y 50.0
+
+#endif

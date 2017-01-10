@@ -57,6 +57,9 @@ float MapAnalyser::get_Orientation()
 
 void MapAnalyser::first_Scan()
 {
+	//detect ennemyes beacons
+	detect_ennemy();
+		
 	direct_convert();
 	
 	//Save initials angles to get orientation
@@ -65,6 +68,9 @@ void MapAnalyser::first_Scan()
 		initAngles[i]=anglesArray_curr.at(i).ANGLE;
 	}
 	
+	
+	//detect side
+	detect_side();
 }
 
 void MapAnalyser::direct_convert()
