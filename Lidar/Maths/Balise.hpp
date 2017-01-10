@@ -29,6 +29,11 @@ class Balise : public Point
 		 */
 		void activate();
 		void desactivate();
+		
+		/**
+		 * Return the state of the beacon
+		 * @return true if active, false if desactive
+		 */
 		bool get_State();
 	
 };

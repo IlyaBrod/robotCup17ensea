@@ -20,3 +20,4 @@ void compute_beacon_dist(Balise &b)
 {
 	b.DIST = compute_dist(b.DELTA);
 }
+

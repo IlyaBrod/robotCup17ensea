@@ -8,6 +8,7 @@
 
 #define EPSILON 0.11
 #define MOVE_EPSILON 10
+#define TRACK_EPSILON 10.0
 
 typedef enum{YELLOW,BLUE} TeamColor;
 
@@ -24,24 +25,28 @@ class MapAnalyser
 		
 		bool loopOnce;
 		bool ennemyBeacon;
-		
+
 		int mode;
 		TeamColor side;
 		
-		std::vector<Balise> anglesArray_prev;
-		std::vector<Balise> anglesArray_curr;
-		std::vector<float> anglesArray_raw;
+		std::vector<Balise> anglesArray_prev; //PREV
+		std::vector<Balise> anglesArray_curr; //CURR
+		std::vector<float> anglesArray_raw; //RAW
 		float* initAngles;
 		
 		//True if the scanning cycles ended by a high value
 		bool endByTop;
+		
 		/**
 		 * Correct the detections errors,
-		 * construct a beacons map, detect number of beacons which 
+		 * Construct a beacons map, detect number of beacons which 
 		 * gives a viable data.
 		 */
 		void correct_Data();
 		
+		/**
+		 * Generate adapted mode of triangulisation
+		 */
 		void set_Mode();
 
 		/** #1
@@ -74,6 +79,16 @@ class MapAnalyser
 		 * Refresh computing mode.\n
 		 */
 		 void refresh();
+
+		/**
+		 * Get the nearest beacon present in PREV.
+		 * Only in activated beacons. With a distance limit defined by
+		 * TRACK_EPSILON
+		 * @param &b beacon
+		 * @param eps=TRACK_EPSILON (maximim deviation angle [degree])
+		 * @return index of the nearest beacon, -1 if error.
+		 */
+		 int track(const Balise &b,float eps = TRACK_EPSILON);
 
 	public:
 	

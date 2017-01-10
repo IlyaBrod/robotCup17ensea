@@ -274,8 +274,58 @@ void MapAnalyser::set_Mode()
 	}
 }
 
-
 void MapAnalyser::refresh()
 {
+	//Copy CURR to PREV
+	anglesArray_prev.clear();
+	anglesArray_prev=anglesArray_curr;
+	
+	
+	//From RAW to CURR
+	correct_Data();
+	
+	//Reorganise data
+	if(anglesArray_curr.size()>anglesArray_prev.size())
+	{ //there is more beacons than before, track beacons
+		
+	}
+	else if(anglesArray_curr.size()<anglesArray_prev.size())
+	{ //there is less beacons than before
+		
+	}
+	else
+	{
+		//same
+	}
+	
+	anglesArray_raw.clear();
+}
+
+int MapAnalyser::track(const Balise &b,float eps)
+{
+	float min= anglesArray_prev.at(0).ANGLE;
+	unsigned int idx=10; //random defaut values
+	
+	for(unsigned int i;i<anglesArray_prev.size();i++)
+	{	
+		if(anglesArray_prev.at(i).get_State()==true)
+		{
+			float diff = abs(anglesArray_prev.at(i).ANGLE-b.ANGLE);
+			if(min>diff && diff<eps)
+			{
+				min=diff;
+				idx=i;
+			}
+		}
+	}
+	
+	if(idx==10)
+	{
+		return -1;
+	}
+	else
+	{
+		return (int)idx;
+	}
 	
 }
