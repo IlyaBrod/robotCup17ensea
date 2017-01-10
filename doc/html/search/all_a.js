@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['jdr1',['JDR1',['../struct_a_d_c___type_def.html#ab4b0a79a9e4a9d5b0a24d7285cf55bdc',1,'ADC_TypeDef']]],
-  ['jdr2',['JDR2',['../struct_a_d_c___type_def.html#a898b87cab4f099bcca981cc4c9318b51',1,'ADC_TypeDef']]],
-  ['jdr3',['JDR3',['../struct_a_d_c___type_def.html#a40999cd0a255ef62b2340e2726695063',1,'ADC_TypeDef']]],
-  ['jdr4',['JDR4',['../struct_a_d_c___type_def.html#abae6e9d688b16ef350878998f5e21c0b',1,'ADC_TypeDef']]],
-  ['jofr1',['JOFR1',['../struct_a_d_c___type_def.html#aa005e656f528aaad28d70d61c9db9b81',1,'ADC_TypeDef']]],
-  ['jofr2',['JOFR2',['../struct_a_d_c___type_def.html#aa20f76044c11042dde41c1060853fb82',1,'ADC_TypeDef']]],
-  ['jofr3',['JOFR3',['../struct_a_d_c___type_def.html#ae9c78142f6edf8122384263878d09015',1,'ADC_TypeDef']]],
-  ['jofr4',['JOFR4',['../struct_a_d_c___type_def.html#a92f5c1a5aaa8b286317f923482e09d35',1,'ADC_TypeDef']]],
-  ['jsqr',['JSQR',['../struct_a_d_c___type_def.html#a5438a76a93ac1bd2526e92ef298dc193',1,'ADC_TypeDef']]]
+  ['set',['set',['../class_pwm_step_motor.html#aa4bec1596e51036780adaf2ea2ef4606',1,'PwmStepMotor']]],
+  ['setpos',['setPos',['../class_odometry.html#af5c1efcb4960cfd7977f34970f453c01',1,'Odometry']]],
+  ['speedm1',['SpeedM1',['../class_robo_claw.html#a9fa6e40c34685eb1f247a6f9b7cc1b31',1,'RoboClaw']]],
+  ['start',['start',['../class_pwm_step_motor.html#a4bb37712a697f0d0d1335a2407e46cfa',1,'PwmStepMotor']]],
+  ['stepmotor',['StepMotor',['../class_step_motor.html',1,'']]],
+  ['stop',['stop',['../class_pwm_step_motor.html#af187c68b297f58609cc8c02ef8fe165b',1,'PwmStepMotor']]]
 ];

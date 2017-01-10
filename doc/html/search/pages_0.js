@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cmsis_20dsp_20software_20library',['CMSIS DSP Software Library',['../index.html',1,'']]]
+  ['gitguide',['GitGuide',['../md__home_vzavza_robotCup17_Guides_and_Rules_GitGuide.html',1,'']]]
 ];

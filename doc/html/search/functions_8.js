@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['hal_5fmpu_5fdisable',['HAL_MPU_Disable',['../group___c_o_r_t_e_x___private___functions.html#gace6314fb5349d13d72fd54acaadeaccc',1,'stm32f4xx_hal_cortex.h']]],
-  ['hal_5fmpu_5fenable',['HAL_MPU_Enable',['../group___c_o_r_t_e_x___private___functions.html#ga03a0803ed046d1245ce42e47d6b34838',1,'stm32f4xx_hal_cortex.h']]]
+  ['set',['set',['../class_pwm_step_motor.html#aa4bec1596e51036780adaf2ea2ef4606',1,'PwmStepMotor']]],
+  ['setpos',['setPos',['../class_odometry.html#af5c1efcb4960cfd7977f34970f453c01',1,'Odometry']]],
+  ['speedm1',['SpeedM1',['../class_robo_claw.html#a9fa6e40c34685eb1f247a6f9b7cc1b31',1,'RoboClaw']]],
+  ['start',['start',['../class_pwm_step_motor.html#a4bb37712a697f0d0d1335a2407e46cfa',1,'PwmStepMotor']]],
+  ['stop',['stop',['../class_pwm_step_motor.html#af187c68b297f58609cc8c02ef8fe165b',1,'PwmStepMotor']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['exti_5ftypedef',['EXTI_TypeDef',['../struct_e_x_t_i___type_def.html',1,'']]]
+  ['rectangle',['Rectangle',['../class_rectangle.html',1,'']]],
+  ['roboclaw',['RoboClaw',['../class_robo_claw.html',1,'']]]
 ];

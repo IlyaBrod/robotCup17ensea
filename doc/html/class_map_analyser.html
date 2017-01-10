@@ -22,6 +22,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="robot1_top.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RobotCup17
    </div>
@@ -39,7 +40,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -102,12 +102,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4b33462a8446d361966a346228e6c9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1f02b0ff07d7b4291da6bc93c46591b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map_analyser.html#ae1f02b0ff07d7b4291da6bc93c46591b">get_Mode</a> ()</td></tr>
 <tr class="separator:ae1f02b0ff07d7b4291da6bc93c46591b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f384100e33013581930a238cc246b25"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map_analyser.html#a0f384100e33013581930a238cc246b25">get_Data</a> ()</td></tr>
-<tr class="separator:a0f384100e33013581930a238cc246b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af611d5224bb71f911c9e994ad94fd834"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map_analyser.html#af611d5224bb71f911c9e994ad94fd834">get_Orientation</a> ()</td></tr>
+<tr class="separator:af611d5224bb71f911c9e994ad94fd834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310dd50f8434e9bb93f5e71f6ca377fa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_balise.html">Balise</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map_analyser.html#a310dd50f8434e9bb93f5e71f6ca377fa">get_Data</a> ()</td></tr>
+<tr class="separator:a310dd50f8434e9bb93f5e71f6ca377fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd4de811c5b978f9c0479dcaedbfcd7d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map_analyser.html#afd4de811c5b978f9c0479dcaedbfcd7d">get_Side</a> ()</td></tr>
 <tr class="separator:afd4de811c5b978f9c0479dcaedbfcd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b47a8dccc47bad4f7b2beb8d126360f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map_analyser.html#a3b47a8dccc47bad4f7b2beb8d126360f">update</a> ()</td></tr>
-<tr class="separator:a3b47a8dccc47bad4f7b2beb8d126360f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Analyse the scanned map, to define the most efficient location calculating method.<br />
@@ -153,12 +153,12 @@ Give the starting side.<br />
 
 </div>
 </div>
-<a class="anchor" id="a0f384100e33013581930a238cc246b25"></a>
+<a class="anchor" id="a310dd50f8434e9bb93f5e71f6ca377fa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; double &gt; * MapAnalyser::get_Data </td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_balise.html">Balise</a> &gt; * MapAnalyser::get_Data </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -185,6 +185,22 @@ Give the starting side.<br />
 
 </div>
 </div>
+<a class="anchor" id="af611d5224bb71f911c9e994ad94fd834"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MapAnalyser::get_Orientation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the orientation of the robot (angle from Y ground axis) </p><dl class="section return"><dt>Returns</dt><dd>angle [degree] </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="afd4de811c5b978f9c0479dcaedbfcd7d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -198,22 +214,6 @@ Give the starting side.<br />
       </table>
 </div><div class="memdoc">
 <p>Give the initial location of the robot on the map. </p><dl class="section return"><dt>Returns</dt><dd>1 if the robot is yellow, 2 if blue, 0 if error. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a3b47a8dccc47bad4f7b2beb8d126360f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MapAnalyser::update </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>To execute after a 360° round of the sensor. </p>
 
 </div>
 </div>

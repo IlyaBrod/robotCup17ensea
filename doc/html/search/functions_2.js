@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['busin',['BusIn',['../classmbed_1_1_bus_in.html#a60e8a1d93b93bb565d7f6fafacdf6a4b',1,'mbed::BusIn']]],
-  ['businout',['BusInOut',['../classmbed_1_1_bus_in_out.html#aeb307d492d797e5a10919a92f1da5e31',1,'mbed::BusInOut']]],
-  ['busout',['BusOut',['../classmbed_1_1_bus_out.html#a05733cb6ed754af032de0be4d02c4604',1,'mbed::BusOut']]]
+  ['forward',['Forward',['../class_robo_claw.html#a25ca0a311eb8fbd8f67df5a0c29838e8',1,'RoboClaw::Forward()'],['../class_odometry.html#a362bfd65c016a3a8a911aabdf541fef5',1,'Odometry::Forward()']]],
+  ['forwardm1',['ForwardM1',['../class_robo_claw.html#a62f507c49162c096c7c873a566ee8bd5',1,'RoboClaw']]]
 ];
