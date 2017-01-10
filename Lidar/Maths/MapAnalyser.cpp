@@ -75,14 +75,29 @@ void MapAnalyser::direct_convert()
 
 void MapAnalyser::detect_side()
 {
-	if(ennemyBeacon==true)
-	{
-		
+		if(anglesArray_curr.at(1).DIST<anglesArray_curr.at(2).DIST)
+		{// d1 < d2
+			if(ennemyBeacon==true)
+			{
+				side=YELLOW;
+			}
+			else
+			{
+				side=BLUE;
+			
+			}
+		else
+		{// d1 > d2
+			if(ennemyBeacon==true)
+			{
+				side=BLUE;
+			}
+			else
+			{
+				side=YELLOW;
+			}
 	}
-	else
-	{
-		
-	}
+
 }
 
 void MapAnalyser::detect_ennemy()

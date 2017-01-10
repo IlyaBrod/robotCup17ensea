@@ -48,7 +48,8 @@ class MapAnalyser
 		void detect_ennemy();
 		
 		/**
-		 * Detect the color side of the robot
+		 * Detect the color side of the robot. Assuming that the DIST
+		 * was compute before.
 		 */
 		void detect_side();
 
