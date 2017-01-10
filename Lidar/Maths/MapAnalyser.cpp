@@ -19,7 +19,14 @@ MapAnalyser::MapAnalyser()
 
 void MapAnalyser::add_Angle(double angle)
 {
-	anglesArray_raw.push_back(angle);
+	if(angle==0)
+	{
+		refresh();
+	}
+	else
+	{
+		anglesArray_raw.push_back(angle);
+	}
 }
 
 int MapAnalyser::count()
@@ -267,3 +274,8 @@ void MapAnalyser::set_Mode()
 	}
 }
 
+
+void MapAnalyser::refresh()
+{
+	
+}
