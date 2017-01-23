@@ -65,7 +65,7 @@ float MapAnalyser::get_Orientation()
 void MapAnalyser::first_Scan()
 {
 	//detect ennemyes beacons
-	detect_ennemy();
+	detect_Ennemy();
 		
 	raw_To_Curr();
 	
@@ -77,7 +77,7 @@ void MapAnalyser::first_Scan()
 	
 	
 	//detect side
-	detect_side();
+	detect_Side();
 }
 
 void MapAnalyser::raw_To_Curr(const int param)
@@ -108,7 +108,7 @@ void MapAnalyser::raw_To_Curr(const int param)
 
 }
 
-void MapAnalyser::detect_side()
+void MapAnalyser::detect_Side()
 {
 		if(anglesArray_curr.at(1).DIST<anglesArray_curr.at(2).DIST)
 		{// d1 < d2
@@ -136,7 +136,7 @@ void MapAnalyser::detect_side()
 
 }
 
-void MapAnalyser::detect_ennemy()
+void MapAnalyser::detect_Ennemy()
 {
 	if(anglesArray_raw.size()>6)
 	{	
@@ -303,7 +303,7 @@ void MapAnalyser::refresh()
 		
 	}
 	else if(anglesArray_curr.size()<anglesArray_prev.size())
-	{ //there is less beacons than before
+	{ //There is less beacons than before
 		interList = anglesArray_prev;
 		
 		for(unsigned int i;i<anglesArray_curr.size();i++)
@@ -320,7 +320,7 @@ void MapAnalyser::refresh()
 		
 		
 	}
-	else
+	else //CURR = PREV
 	{
 		//same
 	}

@@ -46,13 +46,13 @@ class MapAnalyser
 		 * Configure the number of beacons after the first scan round.
 		 * Initialize the IDs of all beacons.
 		 */
-		void detect_ennemy();
+		void detect_Ennemy();
 		
 		/**
 		 * Detect the color side of the robot. Assuming that the DIST
 		 * was compute before.
 		 */
-		void detect_side();
+		void detect_Side();
 
 		/**
 		 * Scan to run after the first round
