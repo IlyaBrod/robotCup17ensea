@@ -38,16 +38,9 @@ class MapAnalyser
 		bool endByTop;
 		
 		/**
-		 * Correct the detections errors,
-		 * Construct a beacons map, detect number of beacons which 
-		 * gives a viable data.
-		 */
-		void correct_Data();
-		
-		/**
 		 * Generate adapted mode of triangulisation
 		 */
-		void set_Mode();
+		void auto_Mode();
 
 		/** #1
 		 * Configure the number of beacons after the first scan round.
@@ -67,11 +60,16 @@ class MapAnalyser
 		void first_Scan();
 		
 		/** #2
-		 * Convert raw to balise assuming no errors
-		 * (grouping 2 per 2 angles), hold the save IDs.\n
-		 * Compute distances.
+		 * Convert RAW data to CURR using 2 modes :\n
+		 * - param=0 : direct convert assuming no errors.\n
+		 * - param=1 : convert with correction.\n
+		 * INFO : 
+		 * \tCompute the number of available beacons.\n
+		 * \tBeacons IDs are not saved, and randomly assigned.\n
+		 * \tCompute distances for each beacon.
+		 * @param param Mode used. Default = 0.
 		 */
-		void direct_convert();
+		void raw_To_Curr(const int param=0);
 
 		/**
 		 * Need to be executed when the 0° is send.\n

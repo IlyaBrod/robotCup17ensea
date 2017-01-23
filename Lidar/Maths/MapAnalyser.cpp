@@ -67,7 +67,7 @@ void MapAnalyser::first_Scan()
 	//detect ennemyes beacons
 	detect_ennemy();
 		
-	direct_convert();
+	raw_To_Curr();
 	
 	//Save initials angles to get orientation
 	for(unsigned int i;i<anglesArray_curr.size();i++)
@@ -80,23 +80,32 @@ void MapAnalyser::first_Scan()
 	detect_side();
 }
 
-void MapAnalyser::direct_convert()
+void MapAnalyser::raw_To_Curr(const int param)
 {
-	//convert
-	int j=0;
-	for(unsigned int i=0;i<anglesArray_raw.size();i+=2)
+	if(param==1) //DIRECT CONVERT
 	{
-		anglesArray_curr.at(j).ANGLE = anglesArray_raw.at(i);
-		anglesArray_curr.at(j).DELTA = anglesArray_raw.at(i+1)-anglesArray_raw.at(i);
-		j++;
+		//convert
+		int j=0;
+		for(unsigned int i=0;i<anglesArray_raw.size();i+=2)
+		{
+			anglesArray_curr.at(j).ANGLE = anglesArray_raw.at(i);
+			anglesArray_curr.at(j).DELTA = anglesArray_raw.at(i+1)-anglesArray_raw.at(i);
+			j++;
+		}
 	}
-	
-	//compute dists
+	else //CONVERT WITH CORRECTION
+	{
+
+	}
+
+	//OTHER TASKS
+	//	Compute dists
 	for(unsigned int i=0;i<anglesArray_curr.size();i++)
 	{
 		compute_beacon_dist(anglesArray_curr.at(i));
 	}
-	
+
+
 }
 
 void MapAnalyser::detect_side()
@@ -148,9 +157,10 @@ void MapAnalyser::detect_ennemy()
 	}
 }
 
+/*
 void MapAnalyser::correct_Data()
 {
-	/*
+	
 	double part1,part2;
 	bool state = endByTop;
 	std::vector<int> toErase;
@@ -254,10 +264,10 @@ void MapAnalyser::correct_Data()
 		
 		
 		
-	}*/
-}
+	}
+}*/
 
-void MapAnalyser::set_Mode()
+void MapAnalyser::auto_Mode()
 {
 	int nbr = count();
 	if(nbr<2)
@@ -277,7 +287,6 @@ void MapAnalyser::set_Mode()
 void MapAnalyser::refresh()
 {
 	std::vector<Balise> interList;
-	auto it = interList.cbegin()
 	int idx;
 	
 	//Copy CURR to PREV
@@ -286,7 +295,7 @@ void MapAnalyser::refresh()
 	
 	
 	//From RAW to CURR
-	correct_Data();
+	raw_To_Curr(1);
 	
 	//Reorganise data
 	if(anglesArray_curr.size()>anglesArray_prev.size())
@@ -304,7 +313,7 @@ void MapAnalyser::refresh()
 			if(idx!=-1)
 			{
 				anglesArray_curr.at(i).ID = anglesArray_prev.at(idx).ID;
-				interList.erase(it+idx);
+				interList.erase(interList.begin()+idx);
 			}
 		
 		}
