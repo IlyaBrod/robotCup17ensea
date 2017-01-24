@@ -8,9 +8,6 @@
 
 #include "../mbed.h"
 #include "../Lidar/Sensor/PwmStepMotor.h"
-#include "../Lidar/Sensor/StepMotor.h"
-
-
 
 class GeneralItem
 {
