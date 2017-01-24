@@ -127,17 +127,23 @@ void MapAnalyser::raw_To_Curr(const int param)
 			{
 				anglesArray_curr[bIdx].ANGLE = anglesArray_raw[Idx];
 				anglesArray_curr[bIdx].DELTA = anglesArray_raw[Idx+1]-anglesArray_raw[Idx];
+				anglesArray_curr[bIdx].activate();
 				Idx+=2;
 			}
 			else
 			{
 				anglesArray_curr[bIdx].ANGLE = anglesArray_raw[Idx];
 				anglesArray_curr[bIdx].DELTA = anglesArray_raw[Idx+3]-anglesArray_raw[Idx];
+				anglesArray_curr[bIdx].activate();
 				Idx+=4;
 			}
 
 			bIdx++;
 
+		}
+		for((unsigned int)bIdx;bIdx<anglesArray_curr.size()-1;bIdx++)
+		{
+			anglesArray_curr[bIdx].desactivate();
 		}			
 
 		//ERROR TYP 3 : Extra small angles [CORRECTION_EPSILON]
@@ -156,7 +162,11 @@ void MapAnalyser::raw_To_Curr(const int param)
 	//	Compute dists
 	for(unsigned int i=0;i<anglesArray_curr.size();i++)
 	{
-		compute_beacon_dist(anglesArray_curr[i]);
+		if(anglesArray_curr[i].get_State())
+		{
+			compute_beacon_dist(anglesArray_curr[i]);
+		}
+		
 	}
 
 
