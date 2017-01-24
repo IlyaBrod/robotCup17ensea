@@ -2,7 +2,7 @@
 #define OBSCARR_H
 
 #include "controle.h"
-#include "figure.h"
+#include "Figure.h"
 #include "point.h"
 
 class obsCarr : public figure {
