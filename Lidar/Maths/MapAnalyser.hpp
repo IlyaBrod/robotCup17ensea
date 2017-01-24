@@ -6,9 +6,12 @@
 #include "Balise.hpp"
 #include "triangulation.hpp"
 
+#define CORRECTION_EPSILON 0.11 //minimum angle for validation
+#define TRACK_EPSILON 20.0 //max tracking angular distance
+
 #define EPSILON 0.11
 #define MOVE_EPSILON 10
-#define TRACK_EPSILON 20.0
+
 
 typedef enum{YELLOW,BLUE} TeamColor;
 
@@ -35,7 +38,7 @@ class MapAnalyser
 		float* initAngles;
 		
 		//True if the scanning cycles ended by a high value
-		bool endByTop;
+		bool endSignalState;
 		
 		/**
 		 * Generate adapted mode of triangulisation
