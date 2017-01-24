@@ -117,12 +117,18 @@ void MapAnalyser::raw_To_Curr(const int param)
 		int bIdx=0;
 		int Idx=0;
 
-		while(Idx<anglesArray_raw.size())
+
+		for(unsigned int i;i<anglesArray_curr.size();i++)
+		{
+			anglesArray_curr[i].desactivate();
+		}			
+
+		while(Idx<anglesArray_raw.size()-1)
 		{
 			step0 = anglesArray_raw[Idx+1] - anglesArray_raw[Idx];
 			step1 = anglesArray_raw[Idx+2] - anglesArray_raw[Idx+1];
 			step2 = anglesArray_raw[Idx+3] - anglesArray_raw[Idx+2];
-
+			
 			if(step1 > step0+step2)
 			{
 				anglesArray_curr[bIdx].ANGLE = anglesArray_raw[Idx];
@@ -139,12 +145,32 @@ void MapAnalyser::raw_To_Curr(const int param)
 			}
 
 			bIdx++;
-
 		}
-		for((unsigned int)bIdx;bIdx<anglesArray_curr.size()-1;bIdx++)
+		//360° loop
+		if(Idx==anglesArray_raw.size()-1)
 		{
-			anglesArray_curr[bIdx].desactivate();
-		}			
+			step0 = anglesArray_raw[Idx+1] - anglesArray_raw[Idx];
+			step1 = 360+anglesArray_raw[0] - anglesArray_raw[Idx+1];
+			step2 = anglesArray_raw[1] - anglesArray_raw[0];
+			
+			if(step1 > step0+step2)
+			{
+				anglesArray_curr[bIdx].ANGLE = anglesArray_raw[Idx];
+				anglesArray_curr[bIdx].DELTA = anglesArray_raw[Idx+1]-anglesArray_raw[Idx];
+				anglesArray_curr[bIdx].activate();
+				Idx+=2;
+			}
+			else
+			{
+				anglesArray_curr[0].ANGLE = anglesArray_raw[Idx];
+				anglesArray_curr[0].DELTA = anglesArray_raw[1]-anglesArray_raw[Idx];
+				anglesArray_curr[0].activate();
+				Idx+=4;
+			}
+		bIdx++;
+		}
+
+		
 
 		//ERROR TYP 3 : Extra small angles [CORRECTION_EPSILON]
 		for(unsigned int i=0;i<anglesArray_curr.size();i++)
