@@ -3,7 +3,7 @@
 
 #include "controle.h"
 #include "figure.h"
-#include "point.h"
+#include "../General/Point.hpp"
 
 class obsCarr : public figure {
 public:

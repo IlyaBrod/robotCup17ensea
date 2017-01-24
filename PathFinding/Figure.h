@@ -1,7 +1,7 @@
 #ifndef FIGURE_H
 #define FIGURE_H
 
-#include "point.h"
+#include "../General/Point.h"
 
 class figure {
 public:

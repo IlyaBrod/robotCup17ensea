@@ -3,7 +3,7 @@
 #include "math.h"
 
 #include "controle.h"
-#include "point.h"
+#include "../General/Point.h"
 
 typedef struct PP4 PointsParc4;
 
