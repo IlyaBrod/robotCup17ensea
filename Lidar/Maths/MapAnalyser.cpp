@@ -32,7 +32,15 @@ void MapAnalyser::add_Angle(double angle)
 
 int MapAnalyser::count()
 {
-	return (int)anglesArray_curr.size();
+	int taille=0;
+	for(unsigned int i=0;i<anglesArray_curr.size();i++)
+	{
+		if(anglesArray_curr[i].get_State())
+		{
+			taille++;
+		}
+	}
+	return taille;
 }
 
 int MapAnalyser::get_Mode()
@@ -55,10 +63,13 @@ float MapAnalyser::get_Orientation()
 	float summ=0;
 	for(unsigned int i; i<anglesArray_curr.size();i++)
 	{
-		summ+=anglesArray_curr[i].ANGLE-initAngles[anglesArray_curr[i].ID];
+		if(anglesArray_curr[i].get_State())
+		{
+			summ+=anglesArray_curr[i].ANGLE-initAngles[anglesArray_curr[i].ID];
+		}	
 	}
 	
-	return summ/anglesArray_curr.size();
+	return (float)summ/count();
 }
 
 // 																 PRIVATE
@@ -89,6 +100,8 @@ void MapAnalyser::first_Scan()
 	
 	//detect side
 	detect_Side();
+
+	anglesArray_raw.clear();
 }
 
 void MapAnalyser::raw_To_Curr(const int param)
@@ -175,7 +188,7 @@ void MapAnalyser::raw_To_Curr(const int param)
 		//ERROR TYP 3 : Extra small angles [CORRECTION_EPSILON]
 		for(unsigned int i=0;i<anglesArray_curr.size();i++)
 		{
-			if(anglesArray_curr[i].DELTA<EPSILON)
+			if(anglesArray_curr[i].DELTA<CORRECTION_EPSILON)
 			{
 				anglesArray_curr[i].desactivate();
 			}
@@ -383,7 +396,7 @@ void MapAnalyser::refresh()
 	}
 	else
 	{
-		std::vector<Balise> interList;
+		std::vector<int> interList;
 		int idx;
 		
 		//Copy CURR to PREV
@@ -396,44 +409,86 @@ void MapAnalyser::refresh()
 		
 		//Reorganise data
 		if(anglesArray_curr.size()>anglesArray_prev.size())
-		{ //there is more beacons than before, track beacons
+		{ //There is more beacons than before, track beacons
 			
+			for(unsigned int i=0;i<anglesArray_curr.size();i++)
+			{
+				if(anglesArray_curr[i].get_State())
+				{
+					idx=track(anglesArray_curr[i]);
+					
+					if(idx!=-1)
+					{
+						anglesArray_curr[i].ID = anglesArray_prev[idx].ID;
+					}
+					else
+					{
+						interList.push_back(i);
+					}
+				}
+			}
+
+			for(unsigned int i=0;i<interList.size();i++)
+			{
+				idx = track(anglesArray_curr[interList[i]],true);
+				anglesArray_curr[interList[i]].ID = anglesArray_prev[idx].ID;
+			}
+
 		}
 		else if(anglesArray_curr.size()<anglesArray_prev.size())
 		{ //There is less beacons than before
-			interList = anglesArray_prev;
+			//interList = anglesArray_prev;
 			
-			for(unsigned int i;i<anglesArray_curr.size();i++)
+			for(unsigned int i=0;i<anglesArray_curr.size();i++)
 			{
-				idx=track(anglesArray_curr[i]);
-				
-				if(idx!=-1)
+				if(anglesArray_curr[i].get_State())
 				{
-					anglesArray_curr[i].ID = anglesArray_prev[idx].ID;
-					interList.erase(interList.begin()+idx);
+					idx=track(anglesArray_curr[i]);
+					
+					if(idx!=-1)
+					{
+						anglesArray_curr[i].ID = anglesArray_prev[idx].ID;
+						//interList.erase(interList.begin()+idx);
+					}
 				}
-			
-			}
-			
-			
+			}		
 		}
 		else //CURR = PREV
 		{
 			//same
 		}
+	
+		//ERROR TYP 2 : Check beacons extremity masks
 		
+		for(unsigned int i=0;i<anglesArray_curr.size();i++)
+		{
+			for(unsigned int j=0;j<anglesArray_prev.size();j++)
+			{
+				if(anglesArray_curr[i].ID==anglesArray_prev[j].ID)
+				{
+					if(abs(anglesArray_curr[i].DELTA-anglesArray_prev[j].DELTA) > MOVE_EPSILON )
+					{
+						anglesArray_curr[i].desactivate();
+					}
+				}
+			}
+		}
+
+
 		anglesArray_raw.clear();
+
 	}
+
 }
 
-int MapAnalyser::track(const Balise &b,float eps)
+int MapAnalyser::track(const Balise &b,bool mode,float eps)
 {
 	float min= anglesArray_prev[0].ANGLE;
 	unsigned int idx=10; //random defaut values
 	
 	for(unsigned int i;i<anglesArray_prev.size();i++)
 	{	
-		if(anglesArray_prev[i].get_State()==true)
+		if(anglesArray_prev[i].get_State()==(!mode))
 		{
 			float diff = abs(anglesArray_prev[i].ANGLE-b.ANGLE);
 			if(min>diff && diff<eps)

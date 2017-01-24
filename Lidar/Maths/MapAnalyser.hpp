@@ -8,10 +8,7 @@
 
 #define CORRECTION_EPSILON 0.11 //minimum angle for validation
 #define TRACK_EPSILON 20.0 //max tracking angular distance
-
-#define EPSILON 0.11
 #define MOVE_EPSILON 10
-
 
 typedef enum{YELLOW,BLUE} TeamColor;
 
@@ -86,10 +83,11 @@ class MapAnalyser
 		 * Only in activated beacons. With a distance limit defined by
 		 * TRACK_EPSILON
 		 * @param &b beacon
+		 * @param mode Mode of scanning. False using activated beacons, True using desactivated beacons.
 		 * @param eps=TRACK_EPSILON (maximim deviation angle [degree])
 		 * @return index of the nearest beacon, -1 if error.
 		 */
-		 int track(const Balise &b,float eps = TRACK_EPSILON);
+		 int track(const Balise &b,bool mode=false,float eps = TRACK_EPSILON);
 
 	public:
 	
