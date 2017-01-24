@@ -1,39 +1,23 @@
 #include "Point.hpp"
 
-
-Point::Point()
-{
-	X=0.0;
-	Y=0.0;
-	ANGLE = 0.0 ;
+Point::Point(){
+	x=0.0;
+	y=0.0;
 }
 
-Point::Point(const float &x, const float &y)
-{
-	X = x;
-	Y = y;
-	ANGLE = 0.0;
-	
-}
-Point::Point(const float &x, const float &y, const float &angle)
-{
-	X = x;
-	Y = y;
-	ANGLE = angle;
-	
+Point::Point(const double &_x, const double &_y){
+	x = _x;
+	y = _y;
 }
 
-Point::Point(const Point &p): X(p.X), Y(p.Y), ANGLE(p.ANGLE){}
+Point::Point(const Point &p): x(p.x), y(p.y){}
 
 Point& Point::operator=(const Point& p){
-	X = p.X ;
-	Y = p.Y ;
-	ANGLE = p.ANGLE ;
-	
-	return *this;
+	x = p.x ;
+	y = p.y ;
+	return *this ;
 }
 
-float Point::get_Norm()
-{
-	return sqrt(X*X+Y*Y);
+double dist(const Point &A, const Point &B){
+    return sqrt( (A.x-B.x)*(A.x-B.x)+(A.y-B.y)*(A.y-B.y) );
 }
