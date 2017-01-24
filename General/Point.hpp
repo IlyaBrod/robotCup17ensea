@@ -1,15 +1,11 @@
 #ifndef CLASS_POINT_DEFINED
 #define CLASS_POINT_DEFINED
 
-<<<<<<< HEAD
 #include "myMaths.hpp"
-
-
-=======
 #include <cstddef>
 #include <algorithm>
 #include <cmath>
->>>>>>> nicolas_dev
+
 /**
  * Représente un point dans l'escpace 2D.
  * Position X,Y
