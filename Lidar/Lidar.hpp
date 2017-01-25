@@ -10,6 +10,7 @@ class Lidar : private PwmStepMotor
     private:
         MapAnalyser analyser;
         InterruptIn sensor;
+        Serial pc;
 
         /**
          * Permet de relier le getAngle de PwmStepMotor
@@ -25,6 +26,9 @@ class Lidar : private PwmStepMotor
          * @param pinSensor Pin of infrared sensor
         */
         Lidar(PinName pinMotor, PinName pinSensor);
+
+        
+
 
 
 };

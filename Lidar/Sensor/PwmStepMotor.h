@@ -15,6 +15,7 @@
 #ifndef PWMSTEPMOTOR_H
 #define PWMSTEPMOTOR_H
 
+#include "mbed.h"
 
 
 class PwmStepMotor
