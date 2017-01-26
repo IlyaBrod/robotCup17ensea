@@ -20,8 +20,7 @@
  * Modes :\n
  * -1 : can't compute correct data
  * 0 : 2 beacons
- * 1 : 3 beacons with angles method
- * 2 : 3 beacons with distances method
+ * 1 : 3 beacons with distances method
  * @param anglesArray Table of all angular values
  * @param mode Mode of triangulisation
  * @return Point* with calculated X, Y and ANGLE (orientation)
