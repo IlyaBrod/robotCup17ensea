@@ -27,7 +27,19 @@ class Lidar : private PwmStepMotor
         */
         Lidar(PinName pinMotor, PinName pinSensor);
 
-        
+        /**
+         * Affiche les différentes caractéristiques du système
+         */
+         void print();
+         
+         void print_Orientation();
+         void print_Side();
+         void print_Beacons();
+         void print_Mode();
+         void print_Count();
+
+
+
 
 
 
