@@ -1,10 +1,21 @@
 #include "triangulation.hpp"
 
-Point* triangulate(double* anglesArray,int mode)
+Point* triangulate(float* anglesArray,int mode)
 {
-	Point* loc = new Point();
+	Point* location = new Point();
 	
-	return loc;
+	if(mode==0)
+	{
+
+	}
+	else
+	{
+		float* xy = triangulate_3D(compute_dist(anglesArray[0]),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
+		location -> X = xy[0];
+		location -> Y = xy[1];
+	}
+
+	return location;
 }
 
 
@@ -21,3 +32,20 @@ void compute_beacon_dist(Balise &b)
 	b.DIST = compute_dist(b.DELTA);
 }
 
+
+ float triACalc(float r1,float r2,float n1, float n2)
+{
+	return 0.5*(r1*r1-r2*r2+n2-n1);
+}
+
+float* triangulate_3D(float r1,float r2,float r3)
+{
+	float* vector = new float[2];
+	float a12 = triACalc(r1,r2,P1_NORM2,P2_NORM2);
+	float a13 = triACalc(r1,r3,P1_NORM2,P3_NORM2);
+
+	vector[1] = (a13-D13X*a12/D12X)/(D13Y-D13Y*D12Y/D12X); //Y
+	vector[0] = (a12-D12Y*vector[1])/D12X; //X
+
+	return vector;
+}
