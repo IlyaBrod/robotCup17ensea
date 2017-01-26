@@ -61,7 +61,7 @@ char MapAnalyser::get_Side()
 float MapAnalyser::get_Orientation()
 {
 	float summ=0;
-	for(unsigned int i; i<anglesArray_curr.size();i++)
+	for(unsigned int i=0; i<anglesArray_curr.size();i++)
 	{
 		if(anglesArray_curr[i].get_State())
 		{
@@ -93,7 +93,7 @@ void MapAnalyser::first_Scan()
 	raw_To_Curr();
 	
 	//Save initials angles to get orientation
-	for(unsigned int i;i<anglesArray_curr.size();i++)
+	for(unsigned int i=0;i<anglesArray_curr.size();i++)
 	{
 		initAngles[i]=anglesArray_curr[i].ANGLE;
 	}
@@ -131,12 +131,12 @@ void MapAnalyser::raw_To_Curr(const int param)
 		int Idx=0;
 
 
-		for(unsigned int i;i<anglesArray_curr.size();i++)
+		for(unsigned int i=0;i<anglesArray_curr.size();i++)
 		{
 			anglesArray_curr[i].desactivate();
 		}			
 
-		while(Idx<anglesArray_raw.size()-1)
+		while((unsigned int)Idx<anglesArray_raw.size()-1)
 		{
 			step0 = anglesArray_raw[Idx+1] - anglesArray_raw[Idx];
 			step1 = anglesArray_raw[Idx+2] - anglesArray_raw[Idx+1];
@@ -160,7 +160,7 @@ void MapAnalyser::raw_To_Curr(const int param)
 			bIdx++;
 		}
 		//360° loop
-		if(Idx==anglesArray_raw.size()-1)
+		if((unsigned int)Idx==anglesArray_raw.size()-1)
 		{
 			step0 = anglesArray_raw[Idx+1] - anglesArray_raw[Idx];
 			step1 = 360+anglesArray_raw[0] - anglesArray_raw[Idx+1];
@@ -486,7 +486,7 @@ int MapAnalyser::track(const Balise &b,bool mode,float eps)
 	float min= anglesArray_prev[0].ANGLE;
 	unsigned int idx=10; //random defaut values
 	
-	for(unsigned int i;i<anglesArray_prev.size();i++)
+	for(unsigned int i=0;i<anglesArray_prev.size();i++)
 	{	
 		if(anglesArray_prev[i].get_State()==(!mode))
 		{
