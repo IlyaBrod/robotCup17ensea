@@ -12,15 +12,17 @@ Point* triangulate(std::vector<Balise>* data,int mode,bool enemy)
 	{
 		if(enemy==true)
 		{
+			/*
 			float* xy = triangulate_3D(compute_dist(data),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
 			location -> X = xy[0];
-			location -> Y = xy[1];
+			location -> Y = xy[1];*/
 		}
 		else
 		{
+			/*
 			float* xy = triangulate_3D(compute_dist(anglesArray[0]),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
 			location -> X = xy[0];
-			location -> Y = xy[1];
+			location -> Y = xy[1];*/
 		}
 		
 	}
