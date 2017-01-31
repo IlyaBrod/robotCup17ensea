@@ -13,7 +13,9 @@
 #include "BALISE_CONFIG.hpp"
 #include "Balise.hpp"
 #include <cmath>
+#include <vector>
 #include "../General/myMaths.hpp"
+
 
 /**
  * Return a point representating the location and orientation of the robot.\n
@@ -21,11 +23,11 @@
  * -1 : can't compute correct data
  * 0 : 2 beacons
  * 1 : 3 beacons with distances method
- * @param anglesArray Table of all angular values
+ * @param data Table of all beacons
  * @param mode Mode of triangulisation
  * @return Point* with calculated X, Y and ANGLE (orientation)
  */
-Point* triangulate(float* anglesArray,int mode);
+Point* triangulate(std::vector<Balise>* data,int mode,bool enemy);
 
 /**
  * Compute the distance between a beacon to the robot.

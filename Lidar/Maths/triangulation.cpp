@@ -1,6 +1,6 @@
 #include "triangulation.hpp"
 
-Point* triangulate(float* anglesArray,int mode)
+Point* triangulate(std::vector<Balise>* data,int mode,bool enemy)
 {
 	Point* location = new Point();
 	
@@ -10,9 +10,19 @@ Point* triangulate(float* anglesArray,int mode)
 	}
 	else
 	{
-		float* xy = triangulate_3D(compute_dist(anglesArray[0]),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
-		location -> X = xy[0];
-		location -> Y = xy[1];
+		if(enemy==true)
+		{
+			float* xy = triangulate_3D(compute_dist(data),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
+			location -> X = xy[0];
+			location -> Y = xy[1];
+		}
+		else
+		{
+			float* xy = triangulate_3D(compute_dist(anglesArray[0]),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
+			location -> X = xy[0];
+			location -> Y = xy[1];
+		}
+		
 	}
 
 	return location;
