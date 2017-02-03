@@ -15,6 +15,7 @@
 #include <cmath>
 #include <vector>
 #include "../General/myMaths.hpp"
+#include "MapAnalyser.hpp"
 
 
 /**

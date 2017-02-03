@@ -1,10 +1,10 @@
 #include "triangulation.hpp"
 
-Point* triangulate(std::vector<Balise>* data,int mode,bool enemy)
+Point* triangulate(std::vector<Balise>* data,Settings config)
 {
 	Point* location = new Point();
 	
-	if(mode==0)
+	if(config.mode==0)
 	{
 
 	}
@@ -12,7 +12,7 @@ Point* triangulate(std::vector<Balise>* data,int mode,bool enemy)
 	{	
 		std::vector<int>* selection;
 		
-		if(enemy==true)
+		if(config.ennemyBeacon==true)
 		{
 			selection -> push_back(0);
 			selection -> push_back(1);

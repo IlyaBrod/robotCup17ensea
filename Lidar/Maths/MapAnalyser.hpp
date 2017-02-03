@@ -13,6 +13,21 @@
 typedef enum{YELLOW,BLUE} TeamColor;
 
 /**
+ * Store important date for triangulisation
+ * Easy argument.
+ */
+class Settings
+{
+ 	public:
+		Settings();
+		bool ennemyBeacon;
+		TeamColor side;
+		int mode;
+};
+
+
+
+/**
  * Analyse the scanned map, to define the most efficient location
  * calculating method.\n
  * Check the number of beacons (if the opponnent have some.\n
@@ -23,6 +38,7 @@ class MapAnalyser
 	
 	private:
 		
+		Settings config;
 		bool loopOnce;
 		bool ennemyBeacon;
 
@@ -33,9 +49,6 @@ class MapAnalyser
 		std::vector<Balise> anglesArray_curr; //CURR
 		std::vector<float> anglesArray_raw; //RAW
 		float* initAngles;
-		
-		//True if the scanning cycles ended by a high value
-		bool endSignalState;
 		
 		/**
 		 * Generate adapted mode of triangulisation
