@@ -396,14 +396,3 @@ int MapAnalyser::track(const Balise &b,bool mode,float eps)
 	}
 	
 }
-
-//																		Settings
-
-
-Settings::Settings()
-{
-	ennemyBeacon=false;
-	side=BLUE;
-	mode=1;	
-
-}

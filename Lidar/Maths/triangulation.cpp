@@ -1,6 +1,6 @@
 #include "triangulation.hpp"
 
-Point* triangulate(std::vector<Balise>* data,Settings config)
+Point* triangulate(std::vector<Balise>* data,Settings &config)
 {
 	Point* location = new Point();
 	

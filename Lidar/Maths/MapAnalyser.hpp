@@ -5,27 +5,11 @@
 #include "../../General/myMaths.hpp"
 #include "Balise.hpp"
 #include "triangulation.hpp"
+#include "Settings.hpp"
 
 #define CORRECTION_EPSILON 0.11 //minimum angle for validation
 #define TRACK_EPSILON 20.0 //max tracking angular distance
 #define MOVE_EPSILON 10
-
-typedef enum{YELLOW,BLUE} TeamColor;
-
-/**
- * Store important date for triangulisation
- * Easy argument.
- */
-class Settings
-{
- 	public:
-		Settings();
-		bool ennemyBeacon;
-		TeamColor side;
-		int mode;
-};
-
-
 
 /**
  * Analyse the scanned map, to define the most efficient location

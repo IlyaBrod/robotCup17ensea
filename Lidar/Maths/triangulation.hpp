@@ -15,7 +15,7 @@
 #include <cmath>
 #include <vector>
 #include "../General/myMaths.hpp"
-#include "MapAnalyser.hpp"
+#include "Settings.hpp"
 
 
 /**
@@ -25,10 +25,10 @@
  * 0 : 2 beacons
  * 1 : 3 beacons with distances method
  * @param data Table of all beacons
- * @param mode Mode of triangulisation
+ * @param config Setteings of the MapAnalyser
  * @return Point* with calculated X, Y and ANGLE (orientation)
  */
-Point* triangulate(std::vector<Balise>* data,int mode,bool enemy);
+Point* triangulate(std::vector<Balise>* data,Settings &config);
 
 /**
  * Compute the distance between a beacon to the robot.
