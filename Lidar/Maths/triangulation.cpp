@@ -12,7 +12,7 @@ Point* triangulate(std::vector<Balise>* data,Settings &config)
 	{	
 		std::vector<int>* selection;
 		
-		if(config.ennemyBeacon==true)
+		if(config.ennemyBeacon==true) 					// ADD TEAM COLOR CHANGE
 		{
 			selection -> push_back(0);
 			selection -> push_back(1);
@@ -66,6 +66,23 @@ float* triangulate_3D(float r1,float r2,float r3)
 
 	vector[1] = (a13-D13X*a12/D12X)/(D13Y-D13Y*D12Y/D12X); //Y
 	vector[0] = (a12-D12Y*vector[1])/D12X; //X
+
+	return vector;
+}
+
+
+float* triangulate_2D()
+{
+	float* vector = new float[2];
+
+	/*
+	orientation = 180 - angle caractéristique du terrain (45° dans exemple) - A2
+	A2  =
+
+	Angle bot right triangle = acos( (-(R2B2 R2B2 - R2B1 R2B1 - B2B1 B2B1)) / (2R2B1 B2B1) )
+
+
+	*/
 
 	return vector;
 }
