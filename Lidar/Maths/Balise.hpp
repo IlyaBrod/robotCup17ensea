@@ -38,4 +38,12 @@ class Balise : public Point
 	
 };
 
+/**
+ * Function which search indexes of an array corresponding to a given IDs
+ * @param data List of beacons
+ * @param IDs list of indexes to search
+ * @return List of indexes (int)
+ */
+int* find_Index_ID(std::vector<Balise>* data,std::vector<int>* IDs);
+
 #endif

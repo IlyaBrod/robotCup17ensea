@@ -9,20 +9,28 @@ Point* triangulate(std::vector<Balise>* data,int mode,bool enemy)
 
 	}
 	else
-	{
+	{	
+		std::vector<int>* selection;
+		
 		if(enemy==true)
 		{
-			/*
-			float* xy = triangulate_3D(compute_dist(data),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
+			selection -> push_back(0);
+			selection -> push_back(1);
+			selection -> push_back(2);
+			int* idx = find_Index_ID(data,selection);
+			float* xy = triangulate_3D(compute_dist((data->at(idx[0])).ANGLE),compute_dist((data->at(idx[1])).ANGLE),compute_dist((data->at(idx[2])).ANGLE));
 			location -> X = xy[0];
-			location -> Y = xy[1];*/
+			location -> Y = xy[1];
 		}
 		else
 		{
-			/*
-			float* xy = triangulate_3D(compute_dist(anglesArray[0]),compute_dist(anglesArray[1]),compute_dist(anglesArray[2]));
+			selection -> push_back(0);
+			selection -> push_back(2);
+			selection -> push_back(4);
+			int* idx = find_Index_ID(data,selection);
+			float* xy = triangulate_3D(compute_dist((data->at(idx[0])).ANGLE),compute_dist((data->at(idx[1])).ANGLE),compute_dist((data->at(idx[2])).ANGLE));
 			location -> X = xy[0];
-			location -> Y = xy[1];*/
+			location -> Y = xy[1];
 		}
 		
 	}

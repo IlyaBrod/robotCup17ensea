@@ -41,3 +41,25 @@ bool Balise::get_State()
 	return active;
 }
 
+int* find_Index_ID(std::vector<Balise>* data,std::vector<int>* IDs)
+{
+	int* result = new int[IDs -> size()];
+	int idx=0;
+
+	while((unsigned int)idx<IDs -> size())
+	{
+		for(unsigned int i=0;i<data->size();i++)
+		{
+			int id = (data -> at(i)).ID;
+			if(id==IDs->at(idx))
+			{
+				result[idx] = i;
+				idx++;
+				break;
+			}
+		}
+	}
+
+	return result;
+
+}

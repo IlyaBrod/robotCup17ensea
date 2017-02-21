@@ -16,52 +16,87 @@
 #ifndef MBED_H
 #define MBED_H
 
-#define MBED_LIBRARY_VERSION 113
+#define MBED_LIBRARY_VERSION 134
 
-#include "platform.h"
+#if MBED_CONF_RTOS_PRESENT
+// RTOS present, this is valid only for mbed OS 5
+#define MBED_MAJOR_VERSION 5
+#define MBED_MINOR_VERSION 3
+#define MBED_PATCH_VERSION 3
+
+#else
+// mbed 2
+#define MBED_MAJOR_VERSION 2
+#define MBED_MINOR_VERSION 0
+#define MBED_PATCH_VERSION MBED_LIBRARY_VERSION
+#endif
+
+#define MBED_ENCODE_VERSION(major, minor, patch) ((major)*10000 + (minor)*100 + (patch))
+
+#define MBED_VERSION MBED_ENCODE_VERSION(MBED_MAJOR_VERSION, MBED_MINOR_VERSION, MBED_PATCH_VERSION)
+
+#if MBED_CONF_RTOS_PRESENT
+#include "rtos/rtos.h"
+#endif
+
+#if MBED_CONF_NSAPI_PRESENT
+#include "netsocket/nsapi.h"
+#endif
+
+#if MBED_CONF_EVENTS_PRESENT
+#include "events/mbed_events.h"
+#endif
+
+#include "platform/toolchain.h"
+#include "platform/platform.h"
 
 // Useful C libraries
 #include <math.h>
 #include <time.h>
 
 // mbed Debug libraries
-#include "mbed_error.h"
-#include "mbed_interface.h"
+#include "platform/mbed_error.h"
+#include "platform/mbed_interface.h"
+#include "platform/mbed_assert.h"
 
 // mbed Peripheral components
-#include "DigitalIn.h"
-#include "DigitalOut.h"
-#include "DigitalInOut.h"
-#include "BusIn.h"
-#include "BusOut.h"
-#include "BusInOut.h"
-#include "PortIn.h"
-#include "PortInOut.h"
-#include "PortOut.h"
-#include "AnalogIn.h"
-#include "AnalogOut.h"
-#include "PwmOut.h"
-#include "Serial.h"
-#include "SPI.h"
-#include "SPISlave.h"
-#include "I2C.h"
-#include "I2CSlave.h"
-#include "Ethernet.h"
-#include "CAN.h"
-#include "RawSerial.h"
+#include "drivers/DigitalIn.h"
+#include "drivers/DigitalOut.h"
+#include "drivers/DigitalInOut.h"
+#include "drivers/BusIn.h"
+#include "drivers/BusOut.h"
+#include "drivers/BusInOut.h"
+#include "drivers/PortIn.h"
+#include "drivers/PortInOut.h"
+#include "drivers/PortOut.h"
+#include "drivers/AnalogIn.h"
+#include "drivers/AnalogOut.h"
+#include "drivers/PwmOut.h"
+#include "drivers/Serial.h"
+#include "drivers/SPI.h"
+#include "drivers/SPISlave.h"
+#include "drivers/I2C.h"
+#include "drivers/I2CSlave.h"
+#include "drivers/Ethernet.h"
+#include "drivers/CAN.h"
+#include "drivers/RawSerial.h"
 
 // mbed Internal components
-#include "Timer.h"
-#include "Ticker.h"
-#include "Timeout.h"
-#include "LowPowerTimeout.h"
-#include "LowPowerTicker.h"
-#include "LowPowerTimer.h"
-#include "LocalFileSystem.h"
-#include "InterruptIn.h"
-#include "wait_api.h"
-#include "sleep_api.h"
-#include "rtc_time.h"
+#include "drivers/Timer.h"
+#include "drivers/Ticker.h"
+#include "drivers/Timeout.h"
+#include "drivers/LowPowerTimeout.h"
+#include "drivers/LowPowerTicker.h"
+#include "drivers/LowPowerTimer.h"
+#include "drivers/LocalFileSystem.h"
+#include "drivers/InterruptIn.h"
+#include "platform/wait_api.h"
+#include "hal/sleep_api.h"
+#include "platform/rtc_time.h"
+
+// mbed Non-hardware components
+#include "platform/Callback.h"
+#include "platform/FunctionPointer.h"
 
 using namespace mbed;
 using namespace std;
