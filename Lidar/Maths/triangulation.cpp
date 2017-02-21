@@ -18,7 +18,7 @@ Point* triangulate(std::vector<Balise>* data,Settings &config)
 			selection -> push_back(1);
 			selection -> push_back(2);
 			int* idx = find_Index_ID(data,selection);
-			float* xy = triangulate_3D(compute_dist((data->at(idx[0])).ANGLE),compute_dist((data->at(idx[1])).ANGLE),compute_dist((data->at(idx[2])).ANGLE));
+			float* xy = triangulate_3D(compute_dist((data->at(idx[0])).DELTA),compute_dist((data->at(idx[1])).DELTA),compute_dist((data->at(idx[2])).DELTA));
 			location -> X = xy[0];
 			location -> Y = xy[1];
 		}
@@ -28,7 +28,7 @@ Point* triangulate(std::vector<Balise>* data,Settings &config)
 			selection -> push_back(2);
 			selection -> push_back(4);
 			int* idx = find_Index_ID(data,selection);
-			float* xy = triangulate_3D(compute_dist((data->at(idx[0])).ANGLE),compute_dist((data->at(idx[1])).ANGLE),compute_dist((data->at(idx[2])).ANGLE));
+			float* xy = triangulate_3D(compute_dist((data->at(idx[0])).DELTA),compute_dist((data->at(idx[1])).DELTA),compute_dist((data->at(idx[2])).DELTA));
 			location -> X = xy[0];
 			location -> Y = xy[1];
 		}
@@ -71,9 +71,10 @@ float* triangulate_3D(float r1,float r2,float r3)
 }
 
 
-float* triangulate_2D()
+float* triangulate_2D(Balise &b1,Balise &b2)
 {
 	float* vector = new float[2];
+
 
 	/*
 	orientation = 180 - angle caractéristique du terrain (45° dans exemple) - A2

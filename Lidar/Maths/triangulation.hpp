@@ -9,6 +9,19 @@
 #define D13X 50.0
 #define D13Y 50.0
 
+
+
+/**
+ * Map characteristics 
+ *                        TOP beacon
+ *   MID beacon
+ *                        BOT beacon
+ */
+#define DMID_BOT 50
+#define DMID_TOP 50
+#define DTOP_BOT 50
+
+
 #include "../../General/Point.hpp"
 #include "BALISE_CONFIG.hpp"
 #include "Balise.hpp"
@@ -62,6 +75,14 @@ void compute_beacon_dist(Balise &b);
  */
 float* triangulate_3D(float r1,float r2,float r3);
 
+
+/**
+ * Triangulate with 2 beacons.
+ * @param beacon 1
+ * @param beacon 2
+ * @return float[2] : [X,Y]
+ */
+float* triangulate_2D(Balise &b1,Balise &b2);
 
 
 #endif
