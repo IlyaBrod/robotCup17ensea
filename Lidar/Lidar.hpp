@@ -5,7 +5,7 @@
 #include "Maths/MapAnalyser.hpp"
 #include "mbed.h"
 
-class Lidar : private PwmStepMotor 
+class Lidar : public PwmStepMotor 
 {
     private:
         MapAnalyser analyser;

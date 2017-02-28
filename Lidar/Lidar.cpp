@@ -1,7 +1,7 @@
 #include "Lidar.hpp"
 
 // comme un porc : pourquoi pas des variables default dans le Hpp ?
-Lidar::Lidar() : PwmStepMotor(PB_4), sensor(PA_4),pc(USBTX,USBRX)
+Lidar::Lidar() : sensor(PA_4),pc(USBTX,USBRX),PwmStepMotor()
 {
     analyser = MapAnalyser();
     sensor.rise(this,&Lidar::link);
