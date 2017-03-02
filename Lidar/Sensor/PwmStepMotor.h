@@ -27,10 +27,11 @@ private:
 	float pwmCycle;
 	int lastTime;
 	float angle;
-	PwmOut pwmMoteur;
+	PinName pinOut;
+	PwmOut* pwmMoteur;
+	DigitalIn* NC;
 
-
-public :
+public: 
 	/**
 	 * @param pinName				: nom de la pin utilisé
 	 * @param pwmPeriode_us			: [1 micro seconde]
@@ -38,15 +39,15 @@ public :
 	 * @param nombreDeStepParTour	: [200]
 	 * @param pwmDir				: [0]
 	 */
-	PwmStepMotor(PinName pwmOut,int pwmPeriode_us = 20,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0);
-
+	PwmStepMotor(PinName pwmOut = D13,int pwmPeriode_us = 20,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0);
+	~PwmStepMotor();
 
 	/**
 	 *
 	 * @param pwmPeriode_us : edit
 	 * @param pwmCycle		: edit
 	 */
-	void set(int pwmPeriode_us,float pwmCycle);
+	void set(int pwmPeriode_us,float pwmCycle,int nbStep = 4048);
 
 	/**
 	 *

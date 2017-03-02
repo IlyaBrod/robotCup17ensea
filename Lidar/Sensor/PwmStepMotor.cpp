@@ -3,23 +3,28 @@
 
 
 using namespace std;
-PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us,float pwmCycle, int nombreDeStepParTour, int pwmDir):pwmMoteur(pwmOut)
+PwmStepMotor::PwmStepMotor(PinName pwmOut,int pwmPeriode_us,float pwmCycle, int nombreDeStepParTour, int pwmDir):pinOut(pwmOut)
 {
-	pwmMoteur.period_us(pwmPeriode_us);
 	this->pwmPeriode_us = pwmPeriode_us;
 	this->pwmCycle=pwmCycle;
 	this->nombreDeStepParTour=nombreDeStepParTour;
 	this->pwmDir=pwmDir;
-	pwmMoteur.write(0);
 	angle = 0;
+
+}
+
+PwmStepMotor::~PwmStepMotor()
+{
+	delete pwmMoteur;
 }
 
 
-void PwmStepMotor::set(int pwmPeriode_us,float pwmCycle)
+void PwmStepMotor::set(int pwmPeriode_us,float pwmCycle,int nbStep)
 {
 	this->stop();
 	this->pwmPeriode_us = pwmPeriode_us;
 	this->pwmCycle = pwmCycle;
+	this->nombreDeStepParTour = nbStep;
 }
 
 float PwmStepMotor::readAngle()
@@ -43,9 +48,11 @@ float PwmStepMotor::readAngle()
 
 void PwmStepMotor::start()
 {
+	delete NC;
+	pwmMoteur = new PwmOut(pinOut);
 	lastTime = GeneralItem::sinceInitUsTimer.read();
-	pwmMoteur.period_us(pwmPeriode_us);
-	pwmMoteur.write(pwmCycle);
+	pwmMoteur->period_us(pwmPeriode_us);
+	pwmMoteur->write(pwmCycle);
 	
 }
 
@@ -53,8 +60,10 @@ void PwmStepMotor::stop()
 {
 	float useless;
 	useless = readAngle();
-	pwmMoteur.period_us(0);
-	pwmMoteur.write(0);
+	
+	delete pwmMoteur;
+	NC = new DigitalIn(pinOut);
+	
 }
 
 
