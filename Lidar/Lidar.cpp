@@ -20,6 +20,13 @@ void Lidar::link()
     analyser.add_Angle(readAngle());
 }
 
+
+void Lidar::print_Angles()
+{
+    float angle = readAngle();
+    pc.printf("RAW Angle : %f\n", &angle);
+}
+
 void Lidar::print()
 {
     print_Side();
