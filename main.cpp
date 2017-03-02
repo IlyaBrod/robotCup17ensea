@@ -9,14 +9,15 @@
 
 DigitalOut myled(LED1);
 //Point p(5,6,10);
-PwmStepMotor balise(D6);
+Lidar balise(D6);
+
 //PwmOut myPwm(PB_10);
 Serial pc(USBTX,USBRX);
 
 int main() {
     pc.baud(9600);
 	GeneralItem::initGeneralItem();
-    balise.set(10000,0.5);
+   
 	
     balise.set(100,0.7,4048);
     balise.start();
@@ -25,6 +26,7 @@ int main() {
 
     balise.stop();
     
+
     while(1) {
         
         myled = 1;
