@@ -1,18 +1,33 @@
-/* objet robot 
- * contien toute les composantes d'un robot
- */
+#ifndef ROBOT_CLASS
+#define ROBOT_CLASS
 
- #include "IncludeAll.h"
- 
- 
+#include "../IncludeAll.h"
+
+/* Objet Robot 
+ * Contient toutes les composantes générales d'un robot
+ * Ne pas spécifier les fonctions caractéristiques des robots principal et secondaire.
+ */ 
  class Robot 
  {
-	 private :
+	 private:
 		Lidar lidar;
-		
+		Serial debugger;
 	 
-	 public :
-		Robot(PinName pinMotor = PB_4, PinName pinSensor = PA_4);
-	 
-	 
+	 public:
+		Robot(PinName lidarpinMotor = PB_4, PinName lidarpinSensor = PA_4);
+
+		/**
+		 * Fonction où le code du robot général est placé.
+		 */
+		void run();
+
+		/**
+		 * Fonction qui permet de déplacer le robot
+		 * @param x
+		 * @param y
+		 */
+		void move(float x,float y);
+
  };
+
+ #endif

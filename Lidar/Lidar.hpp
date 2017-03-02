@@ -25,13 +25,14 @@ class Lidar : public PwmStepMotor
          * @param pinMotor Pin of stepmotor
          * @param pinSensor Pin of infrared sensor
         */
-        Lidar(PinName pinMotor, PinName pinSensor);
+        Lidar(PinName pinMotor = D6, PinName pinSensor=D7);
 
         /**
          * Affiche les différentes caractéristiques du système
          */
          void print();
-         
+         void print_Angles();
+
          void print_Orientation();
          void print_Side();
          void print_Beacons();
