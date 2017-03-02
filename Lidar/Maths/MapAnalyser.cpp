@@ -353,7 +353,7 @@ void MapAnalyser::refresh()
 			{
 				if(anglesArray_curr[i].ID==anglesArray_prev[j].ID)
 				{
-					if(abs(anglesArray_curr[i].DELTA-anglesArray_prev[j].DELTA) > MOVE_EPSILON )
+					if(fabs(anglesArray_curr[i].DELTA-anglesArray_prev[j].DELTA) > MOVE_EPSILON )
 					{
 						anglesArray_curr[i].desactivate();
 					}
@@ -377,7 +377,7 @@ int MapAnalyser::track(const Balise &b,bool mode,float eps)
 	{	
 		if(anglesArray_prev[i].get_State()==(!mode))
 		{
-			float diff = abs(anglesArray_prev[i].ANGLE-b.ANGLE);
+			float diff = fabs(anglesArray_prev[i].ANGLE-b.ANGLE);
 			if(min>diff && diff<eps)
 			{
 				min=diff;

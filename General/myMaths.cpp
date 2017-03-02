@@ -68,12 +68,13 @@ template<typename T> float sqrt(T value,int n=50)
 	return res;
 }
 
-template<typename T> T toRad(T deg)
+
+float toRad(float deg)
 {
 	return deg*PI/180.0;
 }
 
-template<typename T> T toDeg(T rad)
+float toDeg(float rad)
 {
-	return rad*180.0/PI;
+		return rad*180.0/PI;
 }

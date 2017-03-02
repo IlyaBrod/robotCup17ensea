@@ -3,6 +3,22 @@
 
 #define PI 3.14159265358979323846264338327950288419716939937510582097494
 
+
+
+/**
+ * Convert the value to degree
+ * @param rad
+ * @return rad in degree
+ */
+float toRad(float deg);
+
+ /**
+ * Convert the value to rad
+ * @param deg
+ * @return deg in rad
+ */
+float toDeg(float rad);
+
 /**
  * Return the maximum between 2 elements
  * @param a
@@ -42,18 +58,5 @@ template<typename T> float pwr(T value,int n);
  */
 template<typename T> float sqrt(T value,int n=50);
 
-/**
- * Convert the value to rad
- * @param deg
- * @return deg in rad
- */
-template<typename T> T toRad(T deg);
-
-/**
- * Convert the value to degree
- * @param rad
- * @return rad in degree
- */
-template<typename T> T toDeg(T rad);
 
 #endif
