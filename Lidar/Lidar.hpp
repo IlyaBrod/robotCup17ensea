@@ -3,14 +3,18 @@
 
 #include "Sensor/PwmStepMotor.h"
 #include "Maths/MapAnalyser.hpp"
+
 #include "mbed.h"
+
+
+
 
 class Lidar : public PwmStepMotor 
 {
     private:
         MapAnalyser analyser;
         InterruptIn sensor;
-        Serial pc;
+       
 
         /**
          * Permet de relier le getAngle de PwmStepMotor

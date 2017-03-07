@@ -1,6 +1,6 @@
 #include "Robot.hpp"
 
-Robot::Robot(PinName lidarpinMotor, PinName lidarpinSensor): lidar(lidarpinMotor,lidarpinSensor), debugger(USBTX,USBRX)
+Robot::Robot(PinName lidarpinMotor, PinName lidarpinSensor): lidar(lidarpinMotor,lidarpinSensor)
 {
 	lidar.set(100,0.7,4048);
 

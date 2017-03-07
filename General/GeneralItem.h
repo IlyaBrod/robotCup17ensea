@@ -11,10 +11,12 @@
 
 class GeneralItem
 {
-public :
+public:
 	static Timer sinceInitUsTimer;
 
 	static void initGeneralItem();
+	static Serial DEBUG_PC;
+
 };
 
 

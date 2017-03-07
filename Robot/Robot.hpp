@@ -11,7 +11,6 @@
  {
 	 private:
 		Lidar lidar;
-		Serial debugger;
 	 
 	 public:
 		Robot(PinName lidarpinMotor = PB_4, PinName lidarpinSensor = PA_4);

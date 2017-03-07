@@ -1,14 +1,16 @@
 #include "Lidar.hpp"
 
+#include "IncludeAll.h"
+
 // comme un porc : pourquoi pas des variables default dans le Hpp ?
-Lidar::Lidar() : sensor(PA_4),pc(USBTX,USBRX),PwmStepMotor()
+Lidar::Lidar() : sensor(PA_4),PwmStepMotor()
 {
     analyser = MapAnalyser();
     sensor.rise(this,&Lidar::link);
     sensor.fall(this,&Lidar::link);
 }
 
-Lidar::Lidar(PinName pinMotor, PinName pinSensor) : PwmStepMotor(pinMotor), sensor(pinSensor),pc(USBTX,USBRX)
+Lidar::Lidar(PinName pinMotor, PinName pinSensor) : PwmStepMotor(pinMotor), sensor(pinSensor)
 {
     analyser = MapAnalyser();
     sensor.rise(this,&Lidar::link);
@@ -24,7 +26,8 @@ void Lidar::link()
 void Lidar::print_Angles()
 {
     float angle = readAngle();
-    pc.printf("RAW Angle : %f\n\r", &angle);
+    
+    GeneralItem::DEBUG_PC.printf("RAW Angle : %f\n\r", &time);
 }
 
 void Lidar::print()
@@ -39,24 +42,24 @@ void Lidar::print_Side()
 {
     if(analyser.get_Side()==YELLOW)
     {
-        pc.printf("Team Blue\n");
+       GeneralItem::DEBUG_PC.printf("Team Blue\n");
     }
     else
     {
-        pc.printf("Team Yellow\n");
+       GeneralItem::DEBUG_PC.printf("Team Yellow\n");
     }
 }
 
 void Lidar::print_Orientation()
 {
     float angle = analyser.get_Orientation();
-    pc.printf("Orientation : %f\n",&angle);
+    GeneralItem::DEBUG_PC.printf("Orientation : %f\n",&angle);
 }
 
 void Lidar::print_Count()
 {
     int number = analyser.count();
-    pc.printf("Available beacons : %d\n",&number);
+    GeneralItem::DEBUG_PC.printf("Available beacons : %d\n",&number);
 }
 
 void Lidar::print_Beacons()
@@ -65,21 +68,22 @@ void Lidar::print_Beacons()
     
     for(unsigned int i=0;i<balises -> size();i++)
     {
-        pc.printf("Balise %d",(*balises)[i].ID);
+      GeneralItem::DEBUG_PC.printf("Balise %d",(*balises)[i].ID);
         if((*balises)[i].get_State())
         {
-            pc.printf("ACTIVE\n");
+       GeneralItem::DEBUG_PC.printf("ACTIVE\n");
         }
         else
         {
-            pc.printf("DESACTIVE\n");
+         GeneralItem::DEBUG_PC.printf("DESACTIVE\n");
         }
 
         
-        pc.printf("DELTA : ");
-        pc.printf("%f",&(*balises)[i].DELTA);
-        pc.printf(" ANGLE : ");
-        pc.printf("%f",&(*balises)[i].ANGLE);
-        pc.printf("\n");
+        GeneralItem::DEBUG_PC.printf("DELTA : ");
+        GeneralItem::DEBUG_PC.printf("%f",&(*balises)[i].DELTA);
+        GeneralItem::DEBUG_PC.printf(" ANGLE : ");
+        GeneralItem::DEBUG_PC.printf("%f",&(*balises)[i].ANGLE);
+        GeneralItem::DEBUG_PC.printf("\n");
+        
     }
 }
