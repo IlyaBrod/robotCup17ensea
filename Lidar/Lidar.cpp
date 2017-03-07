@@ -24,7 +24,7 @@ void Lidar::link()
 void Lidar::print_Angles()
 {
     float angle = readAngle();
-    pc.printf("RAW Angle : %f\n", &angle);
+    pc.printf("RAW Angle : %f\n\r", &angle);
 }
 
 void Lidar::print()
