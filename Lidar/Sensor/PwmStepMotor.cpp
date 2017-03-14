@@ -29,7 +29,7 @@ void PwmStepMotor::set(int pwmPeriode_us,float pwmCycle,int nbStep)
 
 float PwmStepMotor::readAngle()
 {
-	int time = GeneralItem::sinceInitUsTimer.read();
+	int time = GeneralItem::sinceInitUsTimer.read_us();
 	int intertime = time - lastTime;
 	lastTime = time;
 
@@ -50,7 +50,7 @@ void PwmStepMotor::start()
 {
 	delete NC;
 	pwmMoteur = new PwmOut(pinOut);
-	lastTime = GeneralItem::sinceInitUsTimer.read();
+	lastTime = GeneralItem::sinceInitUsTimer.read_us();
 	pwmMoteur->period_us(pwmPeriode_us);
 	pwmMoteur->write(pwmCycle);
 	

@@ -15,11 +15,11 @@ int main() {
 	GeneralItem::initGeneralItem();
 	ilGo.run();
     
+    
     while(1) {
-
-        runningLed = 1;
-        wait(1);
-        runningLed = 0;
+        wait_ms(10);
+        GeneralItem::DEBUG_PC.printf("timer raw : %ud \n\r", GeneralItem::sinceInitUsTimer.read_us());
+        wait_ms(10);
     }
 }
 
