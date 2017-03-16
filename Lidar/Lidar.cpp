@@ -19,15 +19,15 @@ Lidar::Lidar(PinName pinMotor, PinName pinSensor) : PwmStepMotor(pinMotor), sens
 
 void Lidar::link()
 {
-    analyser.add_Angle(readAngle());
+    analyser.add_Angle(getAngle());
 }
 
 
 void Lidar::print_Angles()
 {
-    float angle = readAngle();
+    float angle = getAngle();
     
-    GeneralItem::DEBUG_PC.printf("RAW Angle : %f\n\r", &time);
+    GeneralItem::DEBUG_PC.printf("RAW Angle : %f\n\r", &angle);
 }
 
 void Lidar::print()

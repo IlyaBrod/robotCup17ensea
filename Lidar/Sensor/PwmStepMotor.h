@@ -47,25 +47,38 @@ public:
 	 * @param pwmPeriode_us : edit
 	 * @param pwmCycle		: edit
 	 */
+	 public:
 	void set(int pwmPeriode_us,float pwmCycle,int nbStep = 4048);
 
 	/**
 	 *
 	 * @return renvoi l'angle par raport au depart du moteur
 	 */
-	float readAngle();
+	 public:
+	float getAngle();
+	void revAngle();
 
 	/**
 	 *
 	 * @return timer start value
 	 */
+	 public:
 	void start();
+	void stop();
+	void pause();
 
 	/**
 	 *
 	 * @return timer stop value
 	 */
-	void stop();
+
+	/**
+	*
+	*
+	*/
+	void printAngle();
+	void timeSave();
+	int timeDelta();
 
 
 };
