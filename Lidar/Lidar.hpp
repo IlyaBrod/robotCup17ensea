@@ -6,7 +6,8 @@
 
 #include "mbed.h"
 
-
+//debug psy Lidar : cmmenter pourdesactiver
+#define DEBUG_SPY_LIDAR
 
 
 class Lidar : public PwmStepMotor 
@@ -23,7 +24,6 @@ class Lidar : public PwmStepMotor
         void link();
 
     public:
-        Lidar();
         /**
          * Initialisation with specific pin names
          * @param pinMotor Pin of stepmotor
@@ -43,8 +43,8 @@ class Lidar : public PwmStepMotor
          void print_Mode();
          void print_Count();
 
-
-
+         void start();
+         void pause();
 
 
 

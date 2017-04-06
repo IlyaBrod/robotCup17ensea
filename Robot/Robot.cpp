@@ -11,6 +11,7 @@ void Robot::run()
     lidar.start();
     wait(1);
     lidar.stop();
+    lidar.print_Angles();
 }
 
 

@@ -27,24 +27,6 @@ void PwmStepMotor::set(int pwmPeriode_us,float pwmCycle,int nbStep)
 	this->nombreDeStepParTour = nbStep;
 }
 
-float PwmStepMotor::readAngle()
-{
-	int time = GeneralItem::sinceInitUsTimer.read_us();
-	int intertime = time - lastTime;
-	lastTime = time;
-
-	if (pwmDir == 0)
-		angle += (360*intertime/((float)pwmPeriode_us*0.000001*nombreDeStepParTour));
-	else if (pwmDir == 1)
-		angle -= (360*intertime/((float)pwmPeriode_us*0.000001*nombreDeStepParTour));
-
-	if (angle >= 360)
-		angle -= 360;
-	else if (angle < 0)
-		angle += 360;
-
-	return angle;
-}
 
 void PwmStepMotor::start()
 {
@@ -58,13 +40,61 @@ void PwmStepMotor::start()
 
 void PwmStepMotor::stop()
 {
-	float useless;
-	useless = readAngle();
-	
 	delete pwmMoteur;
 	NC = new DigitalIn(pinOut);
+}
+
+float PwmStepMotor::getAngle()
+{
+	return angle;
+}
+void PwmStepMotor::revAngle()
+{
+	
+	float delta;
+	delta = (timeDelta()*360.0) / (nombreDeStepParTour*pwmPeriode_us);
+	#ifdef DEBUG_SPY_LIDAR
+		GeneralItem::DEBUG_PC.printf("delta : %f\n\r",delta);
+    #endif //DEBUG_SPY_LIDAR
+	timeSave();
+	angle += delta;
+	while (angle > 360)
+	{
+		angle -= 360;
+	}
+	
+}
+
+void PwmStepMotor::pause()
+{
+	revAngle();
+	delete pwmMoteur;
+	NC = new DigitalIn(pinOut);
+}
+void PwmStepMotor::timeSave()
+{
+	lastTime = GeneralItem::sinceInitUsTimer.read_us();
+	 #ifdef DEBUG_SPY_LIDAR
+	GeneralItem::DEBUG_PC.printf("time : %d\n\r", lastTime);
+	#endif // DEBUG_SPY_LIDAR
+}
+
+
+int PwmStepMotor::timeDelta()
+{
+	int delta = 0;
+	delta = GeneralItem::sinceInitUsTimer.read_us() - lastTime;
+	 	#ifdef DEBUG_SPY_LIDAR
+	//GeneralItem::DEBUG_PC.printf("delta : %d\n\r", lastTime);
+		#endif  //DEBUG_SPY_LIDAR
+	return delta;
 	
 }
 
 
-
+void PwmStepMotor::print_Angle()
+{
+	#ifdef DEBUG_SPY_LIDAR
+	GeneralItem::DEBUG_PC.printf("angle : %f\n\r", angle);
+	#endif  //DEBUG_SPY_LIDAR
+}

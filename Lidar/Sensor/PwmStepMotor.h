@@ -39,7 +39,7 @@ public:
 	 * @param nombreDeStepParTour	: [200]
 	 * @param pwmDir				: [0]
 	 */
-	PwmStepMotor(PinName pwmOut = D13,int pwmPeriode_us = 20,float pwmCycle = 0.5, int nombreDeStepParTour = 200, int pwmDir = 0);
+	PwmStepMotor(PinName pwmOut = D13,int pwmPeriode_us = 100,float pwmCycle = 0.5, int nombreDeStepParTour = 4096, int pwmDir = 0);
 	~PwmStepMotor();
 
 	/**
@@ -47,25 +47,40 @@ public:
 	 * @param pwmPeriode_us : edit
 	 * @param pwmCycle		: edit
 	 */
+	 public:
 	void set(int pwmPeriode_us,float pwmCycle,int nbStep = 4048);
 
 	/**
 	 *
 	 * @return renvoi l'angle par raport au depart du moteur
 	 */
-	float readAngle();
+	 public:
+	float getAngle();
+	void revAngle();
 
 	/**
 	 *
 	 * @return timer start value
 	 */
+	 public:
+
+	 
 	void start();
+	void stop();
+	void pause();
 
 	/**
 	 *
 	 * @return timer stop value
 	 */
-	void stop();
+
+	/**
+	*
+	*
+	*/
+	void print_Angle();
+	void timeSave();
+	int timeDelta();
 
 
 };
