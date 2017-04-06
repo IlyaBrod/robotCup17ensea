@@ -9,20 +9,25 @@
 
 DigitalOut runningLed(LED1);
 RobotPrincipal ilGo;
-PwmStepMotor test;
+Lidar test(D6,D7);
 
 int main() {
 
 	GeneralItem::initGeneralItem();
 	//ilGo.run();
+    #ifdef DEBUG_SPY_LIDAR
+    GeneralItem::DEBUG_PC.printf("1");
+    GeneralItem::DEBUG_PC.printf("2");
+    GeneralItem::DEBUG_PC.printf("3");
+    GeneralItem::DEBUG_PC.printf("\n");
+    GeneralItem::DEBUG_PC.printf("lets go in ");
+    GeneralItem::DEBUG_PC.printf("LIDAR debug mode\n\r");
+    wait_ms(100);
+    #endif //DEBUG_SPY_LIDAR
     test.start();
     
     while(1) {
-        test.pause();
-        test.printAngle();
-        wait_ms(1000);
-        test.start();
-        wait_ms(10);
+
         
         
          }

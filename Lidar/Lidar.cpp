@@ -2,24 +2,26 @@
 
 #include "IncludeAll.h"
 
-// comme un porc : pourquoi pas des variables default dans le Hpp ?
-Lidar::Lidar() : sensor(PA_4),PwmStepMotor()
-{
-    analyser = MapAnalyser();
-    sensor.rise(this,&Lidar::link);
-    sensor.fall(this,&Lidar::link);
-}
 
 Lidar::Lidar(PinName pinMotor, PinName pinSensor) : PwmStepMotor(pinMotor), sensor(pinSensor)
 {
     analyser = MapAnalyser();
-    sensor.rise(this,&Lidar::link);
-    sensor.fall(this,&Lidar::link);
+    sensor.rise(callback(this,&Lidar::link));
+    sensor.fall(callback(this,&Lidar::link));
+    sensor.disable_irq();
 }
 
 void Lidar::link()
 {
+
+    pause();
+    revAngle();
     analyser.add_Angle(getAngle());
+    #ifdef DEBUG_SPY_LIDAR
+    print_Angles();
+    #endif //DEBUG_SPY_LIDAR
+    start();
+
 }
 
 
@@ -27,7 +29,7 @@ void Lidar::print_Angles()
 {
     float angle = getAngle();
     
-    GeneralItem::DEBUG_PC.printf("RAW Angle : %f\n\r", &angle);
+    GeneralItem::DEBUG_PC.printf("RAW Angle : %f\n\r", angle);
 }
 
 void Lidar::print()
@@ -86,4 +88,18 @@ void Lidar::print_Beacons()
         GeneralItem::DEBUG_PC.printf("\n");
         
     }
+}
+
+
+void Lidar::start()
+{
+        sensor.enable_irq();
+        PwmStepMotor::start();
+
+}
+
+void Lidar::pause()
+{
+    sensor.disable_irq();
+    PwmStepMotor::pause();
 }
