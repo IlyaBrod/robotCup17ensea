@@ -1,98 +1,51 @@
-/* mbed R/C Servo Library
- * Copyright (c) 2007-2010 sford, cstyles
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+#ifndef CLASS_SERVO
+#define CLASS_SERVO
+
+#include "../mbed.h"
+
+#define DEFAULT_MIN 0.045
+#define DEFAULT_MAX 0.13
+
+/**
+ * Classe de gestion de servo moteur.
+ * Possibilité d'ajuster les bornes pour adapter au moteur.
  */
-  
-#ifndef MBED_SERVO_H
-#define MBED_SERVO_H
+class Servo
+{
+    private:
+        float min=DEFAULT_MIN;
+        float max=DEFAULT_MAX;
 
-#include "mbed.h"
+        PwmOut pin;
+        void setDuty(float alpha);
 
-/** Servo control class, based on a PwmOut
- *
- * Example:
- * @code
- * // Continuously sweep the servo through it's full range
- * #include "mbed.h"
- * #include "Servo.h"
- * 
- * Servo myservo(p21);
- * 
- * int main() {
- *     while(1) {
- *         for(int i=0; i<100; i++) {
- *             myservo = i/100.0;
- *             wait(0.01);
- *         }
- *         for(int i=100; i>0; i--) {
- *             myservo = i/100.0;
- *             wait(0.01);
- *         }
- *     }
- * }
- * @endcode
- */
-class Servo {
+    public:
+        Servo(PinName p);
 
-public:
-    /** Create a servo object connected to the specified PwmOut pin
-     *
-     * @param pin PwmOut pin to connect to 
-     */
-    Servo(PinName pin);
-    
-    /** Set the servo position, normalised to it's full range
-     *
-     * @param percent A normalised number 0.0-1.0 to represent the full range.
-     */
-    void write(float percent);
-    
-    /**  Read the servo motors current position
-     *
-     * @param returns A normalised number 0.0-1.0  representing the full range.
-     */
-    float read();
-    
-    /** Set the servo position
-     *
-     * @param degrees Servo position in degrees
-     */
-    void position(float degrees);
-    
-    /**  Allows calibration of the range and angles for a particular servo
-     *
-     * @param range Pulsewidth range from center (1.5ms) to maximum/minimum position in seconds
-     * @param degrees Angle from centre to maximum/minimum position in degrees
-     */
-    void calibrate(float range = 0.0005, float degrees = 45.0); 
+        /**
+         * Go to a position
+         * @param deg Angle in degree
+         */
+        void write(int deg);
         
-    /**  Shorthand for the write and read functions */
-    Servo& operator= (float percent);
-    Servo& operator= (Servo& rhs);
-    operator float();
+        /**
+         * Stoppe le moteur. 
+         * Evite le problème des valeurs d'angles trop grandes.
+         */
+        void stop();
 
-protected:
-    PwmOut _pwm;
-    float _range;
-    float _degrees;
-    float _p;
+        /**
+         * Amélioration des bornes du servo.
+         * Les paramètres sont Valeur à ajouter aux valeurs par défault.
+         * @param value1
+         * @param value2
+         */
+         void setRange(float value1, float value2);
+         void resetRange();
+
 };
+
+
+
 
 #endif
