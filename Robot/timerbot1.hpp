@@ -1,20 +1,24 @@
 
 
 #ifndef TIMERBOT1
-
 #define TIMERBOT1
+#include "mbed.h"
+#include "../capteur/Hcsr04.hpp"
+
+
 #define timerbot_PWMPRIOD 2
 #define timerbot_PWMcycle 0.6
 #define TIMERBOT1_TTours 5.0
-#include "mbed.h"
 
 class timerbot1
 {
     public:
         static bool BLOCK_ROB1;
         bool BUSY;
-        timerbot1(PinName _moteurg = D9,PinName _av_g1 =D8,PinName _av_g2 =D7,PinName _moteurd = D10, PinName _av_d1 = D12, PinName _av_d2 = D13, PinName _starter = D15);
-        
+        timerbot1(PinName _moteurg = PA_8,PinName _av_g1 =PB_4,PinName _av_g2 =PB_10,PinName _moteurd = PA_15, PinName _av_d1 = PA_15, PinName _av_d2 = PA_14, PinName _starter = PA_3);
+        void associate_Hcsr04 (Hcsr04 *capt_av_d,Hcsr04 *capt_av_g,Hcsr04 *capt_ar_d,Hcsr04 *capt_ar_g);
+       
+       
         void start(void);
         void stop(void);
 
@@ -23,24 +27,47 @@ class timerbot1
         void droite(float angle_deg = 45);
         void gauche(float angle_deg = 45);
 
-
+        bool capteur(float dstop_cm);
+        void pause(void);
 
     private:
 
         void fin_action();
-        PwmOut* moteurg;//(PinName pinout_pwm = D9);
-        PwmOut* moteurd;//(PinName pinout_pwm = D10);
-        DigitalOut av_g1;// = D8);
-        DigitalOut av_g2;// = D7);
-        DigitalOut av_d1;// = D12);
-        DigitalOut av_d2;// = D13);
+
+        //moteur
+        PwmOut* moteurg;
+        PwmOut* moteurd;
+        DigitalOut av_g1;
+        DigitalOut av_g2;
+        DigitalOut av_d1;
+        DigitalOut av_d2;
         DigitalIn *NC,*NC2;
+        //memoir des position des pin pour les timmers
         PinName mg;
         PinName md;
-        InterruptIn starter; 
-        Timeout stoper;
-        Timeout action;
 
+
+
+        //permet le deparage par pin a d'asactiver'
+        InterruptIn starter; 
+
+
+        //permet d'arretter tout au bout de 90s'
+        Timeout stoper;
+        //permet de stopé le robot apres une action et de lancé l'action suivante'
+        Timeout action;
+        
+        //block interuption du fonctionnement
+        //echotime permet de réarmé les interuptions en cours
+        // last act permet de retrouvé quelle action etait en cours
+        int last_act;
+        int echotime;
+        int echoend;
+        Hcsr04* capt_av_d;
+        Hcsr04* capt_av_g;
+        Hcsr04* capt_ar_d;
+        Hcsr04* capt_ar_g;
+        
         
         
         

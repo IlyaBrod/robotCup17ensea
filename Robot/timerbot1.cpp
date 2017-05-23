@@ -21,6 +21,14 @@ void timerbot1::start()
 }
 
 
+void timerbot1::associate_Hcsr04(Hcsr04 *capt_av_d,Hcsr04 *capt_av_g,Hcsr04 *capt_ar_d,Hcsr04 *capt_ar_g)
+{
+    this->capt_av_d = capt_av_d;
+    this->capt_av_g = capt_av_g;
+    this->capt_ar_d = capt_ar_d;
+    this->capt_ar_g = capt_av_g;
+
+}
 void timerbot1::stop()
 {
     //desactivé les autre interuptions
@@ -52,7 +60,9 @@ void timerbot1::avant(float time_s)
 {
     while (BUSY == true)
     {
-         wait_ms(200);
+         wait_ms(100);
+         if (capteur(7))
+            pause();
     }
 
         BUSY = true;
@@ -68,8 +78,10 @@ void timerbot1::avant(float time_s)
         av_d1 = 1;
         av_g2 = 0;
         av_d2 = 0;
-        
 
+        last_act = 1;
+        echotime = GeneralItem::sinceInitUsTimer.read_ms();
+        echoend = echotime + (int)(time_s*1000);
         moteurg->period_ms(timerbot_PWMPRIOD);
         moteurd->period_ms(timerbot_PWMPRIOD);
 
@@ -83,7 +95,9 @@ void timerbot1::arriere(float time_s)
     while (BUSY == true)
     {
     
-     wait_ms(200);
+     wait_ms(100);
+     if (capteur(7))
+            pause();
 
     }
 
@@ -103,8 +117,9 @@ void timerbot1::arriere(float time_s)
         av_g2 = 1;
         av_d2 = 1;
         
-
-
+        last_act = 2;
+        echotime = GeneralItem::sinceInitUsTimer.read_ms();
+        echoend = echotime + (int)(time_s*1000);
         moteurg->period_ms(timerbot_PWMPRIOD);
         moteurd->period_ms(timerbot_PWMPRIOD);
 
@@ -118,7 +133,9 @@ void timerbot1::droite(float angle_deg)
         float time_s = TIMERBOT1_TTours*angle_deg/360.0;
     while (BUSY == true)
     {
-         wait_ms(200);
+         wait_ms(100);
+         if (capteur(7))
+            pause();
     }
 
         BUSY = true;
@@ -138,13 +155,14 @@ void timerbot1::droite(float angle_deg)
         av_d2 = 1;
         
 
-
-
+        last_act = 3;
+        echotime = GeneralItem::sinceInitUsTimer.read_ms();
+        echoend = echotime + (int)(time_s*1000);
         moteurg->period_ms(timerbot_PWMPRIOD);
         moteurd->period_ms(timerbot_PWMPRIOD);
 
-        moteurg->write(timerbot_PWMcycle);
-        moteurd->write(timerbot_PWMcycle);
+        moteurg->write(timerbot_PWMcycle-0.2);
+        moteurd->write(timerbot_PWMcycle-0.2);
 
 }
 
@@ -153,7 +171,10 @@ void timerbot1::gauche(float angle_deg)
         float time_s = TIMERBOT1_TTours*angle_deg/360.0;
     while (BUSY == true)
     {
-         wait_ms(200);
+
+         wait_ms(100);
+         if (capteur(7))
+            pause();
     }
 
         BUSY = true;
@@ -170,13 +191,13 @@ void timerbot1::gauche(float angle_deg)
         av_g2 = 1;
         av_d2 = 0;
         
-
-
+        last_act = 4;
+        echotime = GeneralItem::sinceInitUsTimer.read_ms();
         moteurg->period_ms(timerbot_PWMPRIOD);
         moteurd->period_ms(timerbot_PWMPRIOD);
 
-        moteurg->write(timerbot_PWMcycle);
-        moteurd->write(timerbot_PWMcycle);
+        moteurg->write(timerbot_PWMcycle-0.2);
+        moteurd->write(timerbot_PWMcycle-0.2);
 
 }
 
@@ -204,5 +225,70 @@ void timerbot1::fin_action()
     #endif
 
 }
+
+bool timerbot1::capteur(float dstop_cm)
+{
+    if (last_act == 2)
+        {
+            if (capt_ar_d->get_distance() < dstop_cm)
+                return true;
+            else if (capt_ar_d->get_distance() < dstop_cm)
+                return true;
+            else 
+                return false;
+        }
+    else if (last_act == 1)
+        {
+            if (capt_av_d->get_distance() < dstop_cm)
+                return true;
+            else if (capt_av_d->get_distance() < dstop_cm)
+                return true;
+            else 
+                return false;
+        }
+    else
+        return false;
+}
+
+
+void timerbot1::pause()
+{
+    //tout bloquer
+    //recuperer le temps manquant
+    //attendre d'avoir la place'
+    //redémarer
+    //1
+    delete moteurg;
+    delete moteurd;
+    NC = new DigitalIn(mg);
+    NC2 = new DigitalIn(md);
+    action.detach();
+    BUSY = false;
+    //2
+    echotime = GeneralItem::sinceInitUsTimer.read_ms();
+    int manque = echotime-echoend;
+
+    //3
+    while (capteur(7))
+    {
+        wait_ms(100);
+        
+            
+    }
+
+    //4
+    if (last_act == 1)
+        avant(manque/1000.0);
+    else if (last_act == 2)
+        arriere(manque/1000.0);
+    else if (last_act == 3)
+        droite(manque/1000.0);
+    else if (last_act == 4)
+        gauche(manque/1000.0);
+
+
+}
+
+
 
 

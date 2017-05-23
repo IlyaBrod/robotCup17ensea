@@ -1,13 +1,14 @@
 #ifndef HCSR04
 #define HCSR04
 #include "IncludeAll.h"
+#define TIME_SET 200
 
 class Hcsr04
 {
     protected:
         InterruptIn echo;
         DigitalOut trig;
-        
+        Ticker update;
         float distance;
         int echotime;
         
@@ -22,7 +23,7 @@ class Hcsr04
         void ping_3 (void);
         void ping_4 (void);
 
-        Hcsr04(PinName pecho, PinName ptrig);
+        Hcsr04(PinName pecho = D5, PinName ptrig = D6);
 
 
 
