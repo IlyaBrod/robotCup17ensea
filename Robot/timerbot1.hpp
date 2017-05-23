@@ -13,9 +13,10 @@
 class timerbot1
 {
     public:
+        static float dstop_cm;
         static bool BLOCK_ROB1;
         bool BUSY;
-        timerbot1(PinName _moteurg = PA_8,PinName _av_g1 =PB_4,PinName _av_g2 =PB_10,PinName _moteurd = PA_15, PinName _av_d1 = PA_15, PinName _av_d2 = PA_14, PinName _starter = PA_3);
+        timerbot1(PinName _moteurg = PA_8,PinName _av_g1 =PB_4,PinName _av_g2 =PB_10,PinName _moteurd = PA_15, PinName _av_d1 = PA_13, PinName _av_d2 = PA_14, PinName _starter = PA_3);
         void associate_Hcsr04 (Hcsr04 *capt_av_d,Hcsr04 *capt_av_g,Hcsr04 *capt_ar_d,Hcsr04 *capt_ar_g);
        
        
@@ -27,7 +28,7 @@ class timerbot1
         void droite(float angle_deg = 45);
         void gauche(float angle_deg = 45);
 
-        bool capteur(float dstop_cm);
+        bool capteur();
         void pause(void);
 
     private:
@@ -59,8 +60,11 @@ class timerbot1
         
         //block interuption du fonctionnement
         //echotime permet de réarmé les interuptions en cours
+        
         // last act permet de retrouvé quelle action etait en cours
+        //last act : 1==avant,2==arrière,3==droite,4==gauche
         int last_act;
+        //
         int echotime;
         int echoend;
         Hcsr04* capt_av_d;

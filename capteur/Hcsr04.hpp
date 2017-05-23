@@ -1,7 +1,7 @@
 #ifndef HCSR04
 #define HCSR04
 #include "IncludeAll.h"
-#define TIME_SET 200
+#define TIME_SET 250
 
 class Hcsr04
 {
